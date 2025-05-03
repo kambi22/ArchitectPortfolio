@@ -1,0 +1,53 @@
+{
+  "name": "client",
+  "homepage": ".",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@lottiefiles/dotlottie-react": "^0.13.3",
+    "@lottiefiles/react-lottie-player": "^3.6.0",
+    "@mui/icons-material": "^7.0.2",
+    "@mui/material": "^7.0.2",
+    "aos": "^2.3.4",
+    "axios": "^1.8.4",
+    "bootstrap": "^5.3.5",
+    "browser-image-compression": "^2.0.2",
+    "emailjs-com": "^3.2.0",
+    "react": "^19.0.0",
+    "react-countup": "^6.5.3",
+    "react-dom": "^19.0.0",
+    "react-icons": "^5.5.0",
+    "react-player": "^2.16.0",
+    "react-router": "^7.5.0",
+    "react-router-dom": "^7.5.0",
+    "react-spinners": "^0.17.0",
+    "sweetalert2": "^11.17.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.21.0",
+    "@tailwindcss/postcss": "^4.1.4",
+    "@types/aos": "^3.0.7",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9.21.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "globals": "^15.15.0",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.1.4",
+    "vite": "^6.2.0",
+    "vite-plugin-pwa": "^1.0.0"
+  }
+}

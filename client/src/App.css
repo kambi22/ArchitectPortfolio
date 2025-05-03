@@ -1,0 +1,429 @@
+#root {
+  width: 100%;
+
+  text-align: center;
+  color: inherit;
+
+
+}
+::-webkit-scrollbar{
+  display: none;
+
+}
+
+.inheritColor {
+  color: rgb(120, 118, 118)
+}
+
+/* index.css */
+
+/* =====================footer css======================================= */
+.Footer {
+  position: relative;
+  bottom: 0px;
+  width: 100%;
+  height: fit-content;
+  color: white;
+}
+
+.footer-image {
+  height: 200px;
+  width: 300px;
+  margin-right: auto;
+  position: relative;
+  z-index: 1;
+  bottom: -47px;
+  transform: rotate(3deg);
+}
+
+/* =====================footer css end======================================= */
+
+.ColoredLight {
+  background-color: #5ba5f5;
+  color: rgb(252, 247, 232);
+}
+
+.ColoredDark {
+  background-color: #1f1f20 !important;
+  color: rgb(252, 247, 232);
+
+}
+
+.custom-list {
+  padding: 0;
+  margin: 0;
+}
+
+.custom-list li {
+  list-style: none;
+}
+
+.custom-list li a {
+  text-decoration: none;
+  color: rgb(250, 247, 247);
+  font-size: 15px;
+  transition: color 0.3s ease;
+}
+
+.custom-list li a:hover {
+  color: #dbd8db;
+}
+
+.custom-list li a:focus {
+  color: #dbd8d8;
+}
+
+.quicksupport {
+  background-color: rgb(252, 252, 236);
+}
+
+/* About page css */
+.about-image {
+  position: absolute;
+  height: 300px;
+  width: 300px;
+  z-index: 1;
+  margin: 20px;
+  
+}
+
+.summary-card {
+  position: relative;
+
+}
+
+/*============= sidebar css  */
+
+.sidebar-links {
+  text-decoration: none;
+}
+
+/*end============ sidebar css  */
+
+/* Login page ============= */
+
+
+.GlassEffect {
+  max-width: 500px;
+  min-width: 200px;
+  text-align: center;
+  z-index: 1;
+  height: fit-content;
+  color: #0e0e0e;
+  background: rgba(255, 255, 255, 0.2);
+  /* Semi-transparent background */
+  /* border-radius: 20px; Rounded corners */
+  backdrop-filter: blur(10px);
+  /* Blur effect */
+  -webkit-backdrop-filter: blur(10px);
+  /* Blur effect for Safari */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  /* Light border */
+}
+
+
+/* end loging page =================*/
+.pageBackground {
+  background: linear-gradient(45deg, #e99be5, #63acfa);
+
+}
+
+.GlassEffectFordiv {
+  /* color: #0e0e0e; */
+  background: rgba(255, 255, 255, 0.2);
+  /* Semi-transparent background */
+  /* border-radius: 20px; Rounded corners */
+  backdrop-filter: blur(10px);
+  /* Blur effect */
+  -webkit-backdrop-filter: blur(10px);
+  /* Blur effect for Safari */
+  /* Subtle shadow */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+
+
+
+/*End About page css */
+
+
+/*==================== contact  page css */
+
+
+.full-logo-image {
+  position: relative;
+  height: 500px;
+  width: 600px;
+
+}
+
+.contact-image {
+  position: relative;
+  height: 500px;
+  width: 300px;
+  left: 50px;
+
+}
+
+.email-main {
+  position: relative;
+}
+
+.emailcard {
+  border-top-right-radius: 20px;
+  background-color: red;
+}
+
+.email-image {
+  position: absolute;
+  height: 400px;
+  width: 400px;
+  z-index: 1;
+  top: 62px;
+  margin-left: 50%;
+  /* transform: rotate(10deg);  */
+
+}
+
+/* Home page curve css ==================*/
+
+.home-banner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.home-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: 80%;
+  /* Opacity now only affects the image */
+}
+
+.banner-text {
+  position: absolute;
+  top: 30%;
+
+  text-align: start;
+}
+
+.services-div {
+  margin-top: 100px;
+  padding-bottom: 100px;
+}
+
+/* CurvedBackground.css=========== home services & login =============== */
+
+
+.custom-shape-div {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-div svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 103px;
+
+}
+
+.custom-shape-div .shape-fill {
+  fill: #FFFFFF;
+
+}
+
+.custom-shape-div-login {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+
+.custom-shape-div-login svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 100px;
+
+}
+
+.custom-shape-div-login .shape-fill {
+  fill: #f5f5f5;
+
+
+}
+
+
+/* .hover-card {
+  transition: transform 5s ease, box-shadow 5s ease;
+}
+
+.hover-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+} */
+
+
+/** For mobile devices **/
+@media (max-width: 767px) {
+  .custom-shape-div svg {
+    width: calc(128% + 1.3px);
+    height: 58px;
+  }
+
+}
+
+/* CurvedBackground.css===========home end service=============== */
+
+
+/* CurvedBackground.css===========home start projects=============== */
+
+.project-curve-top .shape-fill {
+  fill: #FFFFFF;
+}
+
+/** For mobile devices **/
+
+/* CurvedBackground.css===========home end projects =============== */
+/* CurvedBackground.css===========home servicees text =============== */
+.services-text {
+  position: absolute;
+  left: 10%;
+  bottom: 5%;
+  font-weight: bold;
+  color: white;
+
+}
+
+/* CurvedBackground.css===========project details =============== */
+.project-detail-scroll {
+  height: 150vh;
+  overflow-y: scroll;
+  
+}
+
+/* CurvedBackground.css=========== addproject =============== */
+.file-upload-container {
+  border: 4px solid transparent;
+  padding: 30px;
+  border-image: repeating-linear-gradient(45deg,
+      #afb1b4 0,
+      #b9babc 10px,
+      #f5f5f5 10px,
+      #f5f5f5 20px) 1;
+  border-radius: 12px;
+  text-align: center;
+  color: #333;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: 0.3s ease;
+}
+
+
+
+.preview-box {
+  position: relative;
+}
+
+
+
+.remove-btn {
+  position: absolute;
+  top:40px;
+  left: 43px;
+
+}
+
+.upload-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.upload-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+
+/* CurvedBackground.css===========home servicees end =============== */
+
+
+
+@media (max-width: 600px) {
+
+  /* contact email Adjust the breakpoint as needed for sm screens */
+  .email-image {
+    height: 250px;
+    width: 250px;
+    position: absolute;
+    z-index: 1;
+    top: 57px;
+    margin-left: 20%;
+  }
+
+  /* contact top Adjust the breakpoint as needed for sm screens */
+  .full-logo-image {
+    height: 180px;
+    width: 180px;
+    position: absolute;
+    
+  }
+
+  .contact-image {
+    width: fit-content;
+    height: 400px;
+    left: 100px;
+  }
+
+  .about-image {
+    position: absolute;
+    height: 320px;
+    width: 85%;
+    align-items: center;
+    text-align: center;
+    margin: 10px;
+    justify-content: center;
+
+  }
+
+  .summary-card {
+    padding-top: 320px;
+
+  }
+
+  .services-div {
+    margin-top: 57px;
+  }
+
+  .project-detail-scroll {
+    height: 100%;
+    overflow-y: none;
+  }
+
+}
+
+/* about page profile image */
+
+
+/*==================== end contact email page css */
