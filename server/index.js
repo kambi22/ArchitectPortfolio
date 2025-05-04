@@ -16,7 +16,11 @@ app.use(express.json());
 app.use(cookieParser())
 // Configure CORS options
 
-app.use(cors({ origin: true, credentials: true }));
+app.use(cors({
+  origin: 'https://itsbambrahcreation.vercel.app',
+  credentials: true
+}));
+
 
 // Cloudinary Config
 cloudinary.config({
