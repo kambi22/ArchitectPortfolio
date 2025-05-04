@@ -39,7 +39,7 @@ const ProjectDetail = (props) => {
     useEffect(() => {
        try {
         setLoading(true)
-        axios.get(`http://localhost:5000/projectbyid/${id}`)
+        axios.get(`${import.meta.env.VITE_SERVER_URL}/projectbyid/${id}`)
         .then((result) => { setProject(result.data), console.log("result:", result.data),
              setImages(result.data.images), setUpdateDate(result.data.updatedAt), console.log('images', result.data.images) })
         .catch((error) => console.error("error to fetch project by id", error))

@@ -37,7 +37,7 @@ export default function Navbar() {
 
     const logout = async () => {
         try {
-          const result = await axios.post('http://localhost:5000/logout', {}, { withCredentials: true });
+          const result = await axios.post(`${import.meta.env.VITE_SERVER_URL}/logout`, {}, { withCredentials: true });
           console.log('logout:',result)
           setIsAuthenticated(false);
           notify('success',`Logout`,'Successfully Logout!')

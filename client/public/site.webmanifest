@@ -1,6 +1,7 @@
 {
-    "name": "Bambrah Creation",
-    "short_name": "Bambrah",
+  "name": "I'ts Bambrah Creation",
+  "short_name": "Bambrah",
+  "description": "This site is Created by satnam singh. Phone: 77400-36662",
     "icons": [
       {
         "src": "/android-chrome-192x192.png",
@@ -14,7 +15,7 @@
       }
     ],
     "start_url": ".",
-  "display": "standalone",
   "theme_color": "#ffffff",
-  "background_color": "#5ba5f5"
+  "background_color": "#ffffff",
+  "display": "standalone"
   }

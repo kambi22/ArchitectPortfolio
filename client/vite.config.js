@@ -9,9 +9,9 @@ export default defineConfig({
       {
       registerType: 'autoUpdate', // Auto-update service worker
       manifest: {
-        name: 'Your App Name',
-        short_name: 'App',
-        description: 'Your app description',
+        name: `I'ts Bambrah Creation`,
+        short_name: 'BAMBRAH CREATION',
+        description: 'Build Your Dream Home with Bambrah Creation',
         theme_color: '#ffffff',
         background_color: '#ffffff',
         display: 'standalone', // Fullscreen PWA

@@ -29,7 +29,7 @@ const Projects = (props) => {
     const fetchProject = () => {
       try {
         setLoading(true)
-        axios.get("http://localhost:5000/project")
+        axios.get(`${import.meta.env.VITE_SERVER_URL}/project`)
           .then((result) => setProjects(result.data))
           .catch((error) => console.log('error', error))
       } catch (error) {
@@ -52,7 +52,7 @@ const Projects = (props) => {
       .then((result) => {
         if (result.isConfirmed) {
           console.log('User clicked OK');
-          axios.delete(`http://localhost:5000/delete/${item._id}`)
+          axios.delete(`${import.meta.env.VITE_SERVER_URL}/delete/${item._id}`)
             .then((result) => {
               console.log('result', result.data),
                 toast('success', 'Project sucessfully Deleted', 'bottom-left', true)

@@ -15,9 +15,7 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   };
-  console.log("ids:",import.meta.env.VITE_EMAILJS_SERVICE_ID, import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-    import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-  )
+ 
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Call backend API to send email/store message

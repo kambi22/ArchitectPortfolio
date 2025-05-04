@@ -78,7 +78,7 @@ export default function EditProject() {
     newArray.splice(index, 1);       // Remove 1 item at the given index
     setDbImages(newArray);
 
-    axios.delete(`http://localhost:5000/delete-images/${encodedPublicId}`)
+    axios.delete(`${import.meta.env.VITE_SERVER_URL}/delete-images/${encodedPublicId}`)
       .then((result) => console.log(`Image ${public_id} deleted`, result.data))
       .catch((error) => console.error(`Failed to delete image ${public_id}`, error));
   };

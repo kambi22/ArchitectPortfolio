@@ -82,7 +82,7 @@ export default function AddProject() {
     console.log('formdata: ', images)
 
     try {
-      axios.post('http://localhost:5000/upload', formData, {
+      axios.post(`${import.meta.env.VITE_SERVER_URL}/upload`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       }).then((resp)=>{
         console.log('Upload successful:', resp.data);
