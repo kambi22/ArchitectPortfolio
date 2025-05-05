@@ -24,8 +24,18 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
 }, { timestamps: true });
 
-
+const homeProjectImgSchema = new mongoose.Schema({
+  images: [
+    {
+      url: String,
+      label: String
+    }
+  ]
+});
 
 const Project = mongoose.model('Project', projectSchema);
 const Admin = mongoose.model('Admin', userSchema);
-module.exports = {Project, Admin};
+const HomeProjectImg = mongoose.model('homeprojectimg', homeProjectImgSchema, 'homeprojectimg');
+
+
+module.exports = {Project, Admin, HomeProjectImg};

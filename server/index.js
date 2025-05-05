@@ -2,7 +2,7 @@ const express = require('express');
 const multer = require('multer');
 const cloudinary = require('cloudinary').v2;
 require('dotenv').config();
-const { Project, Admin } = require('./ModelSchema')
+const { Project, Admin, HomeProjectImg} = require('./ModelSchema')
 const streamifier = require('streamifier');
 const { generatedToken, verifyToken, generateHash, comparePassword } = require('./jwtauth')
 const jwt = require('jsonwebtoken')
@@ -16,7 +16,10 @@ app.use(express.json());
 app.use(cookieParser())
 // Configure CORS options
 
-app.use(cors({ origin: true, credentials: true }));
+app.use(cors({
+  origin: 'https://itsbambrahcreation.vercel.app',
+  credentials: true
+}));
 
 // Cloudinary Config
 cloudinary.config({
@@ -297,6 +300,16 @@ app.post('/logout', (req, resp) => {
     authenticated: false,
     message: "Logged out" 
   });
+});
+
+
+app.get('/homeprojectimg', async (req, res) => {
+  try {
+    const data = await HomeProjectImg.find();
+    res.status(200).json(data);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching images', error });
+  }
 });
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);

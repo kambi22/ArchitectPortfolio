@@ -1,13 +1,16 @@
-import { Box, Button, Container, Grid, Typography, Card, CardContent, CardMedia, Stack, Rating, } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Box, Button, Container, Grid, Typography, Card, CardContent, CardMedia, Stack, Rating, CircularProgress, Skeleton, } from "@mui/material";
+import { Link, useNavigate } from "react-router-dom";
 import AOS from 'aos';
-import { useEffect } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import CountUp from 'react-countup';
 
 
 import { GiTrophyCup } from "react-icons/gi";
+import axios from "axios";
 
 const Home = () => {
+  const [projectimages, setProjectimages] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     AOS.refresh();
@@ -17,6 +20,22 @@ const Home = () => {
     AOS.init({
       duration: 2000
     })
+  }, []);
+
+  useEffect(() => {
+    const getImages = async () => {
+      try {
+        const result = await axios.get(`${import.meta.env.VITE_SERVER_URL}/homeprojectimg`)
+        console.log('resule', result.data)
+        const allImages = result.data.flatMap(item => item.images)
+
+        console.log("result imges", allImages)
+        setProjectimages(allImages)
+      } catch (error) {
+        console.log('error to project images', error)
+      }
+    }
+    getImages()
   }, []);
 
   return (
@@ -65,29 +84,29 @@ const Home = () => {
             justifyContent: "center",
 
           }}>
-          <Grid sx={{ marginTop: '60px' }}  size={{ xs: 12, sm: 6, md: 4, xl: 4 }}>
+          <Grid sx={{ marginTop: '60px' }} size={{ xs: 12, sm: 6, md: 4, xl: 4 }}>
             <Stack spacing={1} >
               <Rating className="mx-auto" name="half-rating" defaultValue={4.5} precision={0.5} />
               <Typography variant="h6">4.5 Rating</Typography>
             </Stack>
           </Grid>
-          <Grid className='bg- ' sx={{ marginTop: '60px' }}  size={{ xs: 12, sm: 6, md: 4, xl: 4 }}>
-            
-            
+          <Grid className='bg- ' sx={{ marginTop: '60px' }} size={{ xs: 12, sm: 6, md: 4, xl: 4 }}>
+
+
             <div className="d-flex justify-content-center">
-              <i><GiTrophyCup fontSize={50} className="text-warning"/></i>
-              <Typography variant="h3" sx={{ fontWeight: 'bold',  }}>
-              <CountUp end={100} duration={8} ></CountUp>
+              <i><GiTrophyCup fontSize={50} className="text-warning" /></i>
+              <Typography variant="h3" sx={{ fontWeight: 'bold', }}>
+                <CountUp end={100} duration={8} ></CountUp>
               </Typography>
             </div>
-            
-            
-              
-            
+
+
+
+
             <Typography variant="h5">Completed Projects</Typography>
 
           </Grid>
-          <Grid sx={{ marginTop: '20px' }}  size={{ xs: 12, sm: 6, md: 4, xl: 4 }}>
+          <Grid sx={{ marginTop: '20px' }} size={{ xs: 12, sm: 6, md: 4, xl: 4 }}>
             <img src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746183762/removebg_full_logo_vkqezy.png' alt="logo" style={{ height: '200px', width: '300px' }} />
           </Grid>
         </Grid>
@@ -104,57 +123,57 @@ const Home = () => {
           <Typography className="text-start " variant="h4">Services</Typography>
 
           <Grid container spacing={3} sx={{ paddingTop: '50px', backgroundColor: 'white' }}>
-            <Grid  size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
+            <Grid size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
               <Card data-aos="zoom-in" className="shadow rounded-3 mx-auto" style={{ height: '200px', width: '300px', position: 'relative', cursor: 'pointer' }}>
                 <img className="w-100 h-100" src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746181053/BuildingPlanner_cmlofs.jpg' alt="" />
                 <Typography className="services-text shadow" variant="h5">Building Planer</Typography>
               </Card>
             </Grid>
-            <Grid  size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
+            <Grid size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
               <Card data-aos="zoom-in" className="shadow rounded-3 mx-auto" style={{ height: '200px', width: '300px', position: 'relative', cursor: 'pointer' }}>
                 <img className="w-100 h-100" src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746180880/Interior_ls0maw.jpg' alt="" />
                 <Typography className="services-text shadow" variant="h5">Interior & Exterior</Typography>
               </Card>
             </Grid>
-            <Grid  size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
+            <Grid size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
               <Card data-aos="zoom-in" className="shadow rounded-3 mx-auto " style={{ height: '200px', width: '300px', position: 'relative', cursor: 'pointer' }}>
                 <img className="w-100 h-100" src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746182297/Estimator_ulzaiq.jpg' alt="" />
                 <Typography className="services-text shadow" variant="h5">Design Estimator</Typography>
               </Card>
             </Grid>
 
-            <Grid  size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
+            <Grid size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
               <Card data-aos="zoom-in" className="shadow rounded-3 mx-auto" style={{ height: '200px', width: '300px', position: 'relative', cursor: 'pointer' }}>
                 <img className="w-100 h-100" src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746182297/Embassy_ylelsq.jpg' alt="" />
                 <Typography className="services-text shadow" variant="h5">Embassy Purpose</Typography>
               </Card>
             </Grid>
-            <Grid  size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
+            <Grid size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
               <Card data-aos="zoom-in" className="shadow rounded-3 mx-auto" style={{ height: '200px', width: '300px', position: 'relative', cursor: 'pointer' }}>
                 <img className="w-100 h-100" src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746180859/valuation_fxzoei.jpg' alt="" />
                 <Typography className="services-text shadow" variant="h5">Valuation</Typography>
               </Card>
             </Grid>
-            <Grid  size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
+            <Grid size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
               <Card data-aos="zoom-in" className="shadow rounded-3 mx-auto" style={{ height: '200px', width: '300px', position: 'relative', cursor: 'pointer' }}>
-                <img className="w-100 h-100" src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746182297/Noc_files_i6jtw1.jpg'alt="" />
+                <img className="w-100 h-100" src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746182297/Noc_files_i6jtw1.jpg' alt="" />
                 <Typography className="services-text shadow" variant="h5">NOC Files</Typography>
               </Card>
             </Grid>
 
-            <Grid  size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
+            <Grid size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
               <Card data-aos="zoom-in" className="shadow rounded-3 mx-auto" style={{ height: '200px', width: '300px', position: 'relative', cursor: 'pointer' }}>
                 <img className="w-100 h-100" src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746182297/visualisation_ureh7y.jpg' alt="" />
                 <Typography className="services-text shadow" variant="h5">Visualisation</Typography>
               </Card>
             </Grid>
-            <Grid  size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
+            <Grid size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
               <Card data-aos="zoom-in" className="shadow rounded-3 mx-auto" style={{ height: '200px', width: '300px', position: 'relative', cursor: 'pointer' }}>
                 <img className="w-100 h-100" src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746180867/structureDesigner_nmq7ye.jpg' alt="" />
                 <Typography className="services-text shadow" variant="h5">Structure Design</Typography>
               </Card>
             </Grid>
-            <Grid  size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
+            <Grid size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
               <Card data-aos="zoom-in" className="shadow rounded-3 mx-auto" style={{ height: '200px', width: '300px', position: 'relative', cursor: 'pointer' }}>
                 <img className="w-100 h-100" src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746180896/approved_f7vm3g.jpg' alt="" />
                 <Typography className="services-text shadow" variant="h5">MC Approved</Typography>
@@ -175,38 +194,41 @@ const Home = () => {
             <Typography className="text-start fw-bold-" sx={{ marginTop: '50px' }} variant="h4">Projects</Typography>
 
             <Grid container spacing={3} sx={{ paddingTop: '50px', }}>
-            <Grid item size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
-            <Link to='/projects'>
-                <Card data-aos="zoom-out" className="shadow rounded-3 mx-auto" style={{ height: '200px', width: '300px', position: 'relative', cursor: 'pointer' }}>
-                  <img className="w-100 h-100" src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746269498/2_aiexdw.jpg' alt="" />
-                  <Typography className="services-text shadow" variant="h5">Home Moga</Typography>
-                </Card>
-                </Link>
-              </Grid>
-         
-          
-            <Grid  size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
-            <Link to='/projects'>
-                <Card data-aos="zoom-out" className="shadow rounded-3 mx-auto" style={{ height: '200px', width: '300px', position: 'relative', cursor: 'pointer' }}>
-                  <img className="w-100 h-100" src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746269505/IMG_20201015_195715_q3m8mc.jpg' alt="" />
-                  <Typography className="services-text shadow" variant="h5">Gurudwara Raniya</Typography>
-                </Card>
-                </Link>
-              </Grid>
-            
-         
-            <Grid  size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
-            <Link to='/projects'>
-                <Card data-aos="zoom-out" className="shadow rounded-3 mx-auto" style={{ height: '200px', width: '300px', position: 'relative', cursor: 'pointer' }}>
-                  <img className="w-100 h-100" src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746269504/Q_Photo_-_4_idywzb.jpg' alt="srover" />
-                  <Typography className="services-text shadow" variant="h5">Srover Raniya</Typography>
-                </Card>
-                </Link>
-              </Grid>
+
+
+              {projectimages.length > 0 ? (
+                projectimages.map((img, i) =>
+                  <Grid key={i} item size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
+                    <Link to='/projects'>
+                      <Card data-aos="zoom-out" className="shadow rounded-3 mx-auto" style={{ height: '200px', width: '300px', position: 'relative', cursor: 'pointer' }}>
+                        <img className="w-100 h-100" src={img.url} alt="" />
+                        <Typography className="services-text shadow" variant="h5">{img.label}</Typography>
+                      </Card>
+                    </Link>
+                  </Grid>
+
+                )
+              ) : (
+                <>
+                  <Grid className='w-100' container spacing={3} >
+                    <Grid className='bg- '  size={{ xs: 12, sm: 6, md: 4, xl: 4 }}  >
+                       <Skeleton animation='wave' className='rounded-4 w-100' variant="rounded" height={220} />
+                    </Grid>
+                    <Grid size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
+                       <Skeleton animation='wave'  className='rounded-4 w-100' variant="rounded" height={220} />
+                    </Grid>
+                    <Grid size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
+                       <Skeleton animation='wave'  className='rounded-4 w-100' variant="rounded" height={220} />
+                    </Grid>
+                  </Grid>
+
+                </>)}
+
+
             </Grid>
-            <Link to='/projects'>
-              <Button size="large"  className="m-5 Project-buttom rounded-3 shadow" variant="contained">View All Projects</Button>
-            </Link>
+
+            <Button variant="contained" sx={{ marginTop: '70px' }} className="rounded-3 " size="large" onClick={() => navigate('/projects')}>Veiw All Projects</Button>
+
 
           </Container>
 

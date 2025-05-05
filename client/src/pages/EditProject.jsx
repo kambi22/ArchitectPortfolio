@@ -107,7 +107,7 @@ export default function EditProject() {
     // Backend will receive dbImages as a string. You will JSON.parse it there.
 
     try {
-      const resp = await axios.put(`http://localhost:5000/update/${id}`, formData, {
+      const resp = await axios.put(`${import.meta.env.VITE_SERVER_URL}/update/${id}`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 
@@ -143,7 +143,7 @@ export default function EditProject() {
 
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/projectbyid/${id}`)
+    axios.get(`${import.meta.env.VITE_SERVER_URL}/projectbyid/${id}`)
       .then((result) => {
         console.log('project updatedAt', result.data.updatedAt),
         setProjectData({

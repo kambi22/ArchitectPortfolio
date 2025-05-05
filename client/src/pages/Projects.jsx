@@ -24,8 +24,9 @@ const Projects = (props) => {
       duration: 2000
     })
   }, []);
-
+console.log("backend server",import.meta.env.VITE_SERVER_URL)
   useEffect(() => {
+
     const fetchProject = () => {
       try {
         setLoading(true)
