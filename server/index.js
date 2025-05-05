@@ -18,10 +18,10 @@ app.use(cookieParser())
 
 app.use(cors({
   origin: 'https://itsbambrahcreation.vercel.app',
-  // origin: 'http://localhost:5173',
   credentials: true
 }));
-
+<<<<<<< HEAD
+=======
 
 
 // Cloudinary Config
