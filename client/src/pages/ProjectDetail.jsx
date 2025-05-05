@@ -91,7 +91,7 @@ const ProjectDetail = (props) => {
                                                     )}
                                 <Card className="w-100 bg- rounded-4 mt-2 p-3 shadow" style={{ height: '200px',overflowY:'scroll'}}>
                                     <h4 className="text-start">Description</h4>
-                                    <p className="text-start text-muted" >{project.description}</p>
+                                    <p className="text-start " style={{color:isDark?'white':'inherit'}} >{project.description}</p>
                                     
                                 </Card>
                             </Grid>
