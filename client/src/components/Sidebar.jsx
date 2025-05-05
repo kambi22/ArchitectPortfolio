@@ -162,12 +162,13 @@ export default function Sidebar() {
             </ListItemButton>
             
             </Link>:null}
-            <div className='rounded-3 text-center quicksupport align-item-end' style={{bottom:'0px',marginBottom:'0px'}}>
+             <Card className='rounded-4 text-center  ' style={{ width: drawerWidth, position: 'fixed', bottom: '0px' }}>
             <h3 className='pt-4 mb-0 pb-0'>Avail Quickly Support</h3><br />
             <p className='m-0 p-0'>We are here to assist for all</p>
             <p className='m-0 pb-3'> your  solutions</p>
-            <Button className='mb-3' onClick={()=>navigate('/contact')} variant='contained' >Let's Talk</Button>
-          </div>
+
+            <Button className='mb-3' onClick={() => navigate('/contact')} variant='contained' >Let's Talk</Button>
+          </Card>
 
         </List>
       </Drawer>
