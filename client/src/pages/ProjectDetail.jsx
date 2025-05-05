@@ -1,5 +1,5 @@
 import { Box, Card, Container, Grid, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { FaChartArea, FaLayerGroup, FaLocationDot } from "react-icons/fa6";
 import { PiBuildingsFill } from "react-icons/pi";
 import { TbRotate3D } from "react-icons/tb";
@@ -8,7 +8,9 @@ import { useParams } from "react-router";
 import axios from "axios";
 import { MdDateRange } from "react-icons/md";
 import { Player } from "@lottiefiles/react-lottie-player";
+import { themeContext } from "../context/themContext";
 const ProjectDetail = (props) => {
+    const { isDark, toggleTheme } = useContext(themeContext);
     const [project, setProject] = useState();
     const [images, setImages] = useState([]);
     const [imgId, setImgId] = useState(0);
