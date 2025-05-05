@@ -127,6 +127,6 @@ This project is a fully functional Architect Portfolio Web Application built usi
 
 # 🤝 Author
 
-  Satnam Singh – Blockchain & MERN Stack Developer
+  Satnam Singh –  MERN Stack Developer
   
   Feel free to connect and collaborate on future projects!
