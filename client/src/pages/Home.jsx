@@ -87,7 +87,7 @@ const Home = () => {
           <Grid sx={{ marginTop: '60px' }} size={{ xs: 12, sm: 6, md: 4, xl: 4 }}>
             <Stack spacing={1} >
               <Rating className="mx-auto" name="half-rating" defaultValue={4.5} precision={0.5} />
-              <Typography variant="h6">4.5 Rating</Typography>
+              <Typography variant="h6">4.5 Ratings</Typography>
             </Stack>
           </Grid>
           <Grid className='bg- ' sx={{ marginTop: '60px' }} size={{ xs: 12, sm: 6, md: 4, xl: 4 }}>
