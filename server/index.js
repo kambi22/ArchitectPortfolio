@@ -21,10 +21,7 @@ app.use(cors({
   methods: ["POST", "GET", "PUT", "DELETE"],
   credentials: true
 }));
-<<<<<<< HEAD
-=======
 
->>>>>>> 6624e9ef5bbef6aff3e0f01e057b1dd7415d9a92
 
 // Cloudinary Config
 cloudinary.config({
