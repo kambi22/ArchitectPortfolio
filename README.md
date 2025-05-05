@@ -1,8 +1,8 @@
-#🏗️ Architect Portfolio - Full Stack MERN Application.
+# 🏗️ Architect Portfolio - Full Stack MERN Application.
 
 This project is a fully functional Architect Portfolio Web Application built using the MERN stack (MongoDB, Express.js, React.js, Node.js). It is designed to allow an architecture firm or an individual architect to showcase their services, completed projects, and design philosophy online, while also having admin functionality to manage and update the content.
 
-#🎯 Purpose of the Project
+# 🎯 Purpose of the Project
   The primary goal of this application is to:
   
   Professionally present architectural services and completed projects.
@@ -27,7 +27,7 @@ This project is a fully functional Architect Portfolio Web Application built usi
   
   Contact Section: A contact form that sends messages to admin email using EmailJS.
 
-#🔐 Admin Functionality (Protected with JWT Authentication)
+# 🔐 Admin Functionality (Protected with JWT Authentication)
   Login Page: Secured login system for admin using JWT and cookie-based auth.
   
   Add Project: Admin can upload new projects (with image upload via Cloudinary).
@@ -49,7 +49,7 @@ This project is a fully functional Architect Portfolio Web Application built usi
   
   .env Configurations for secure environment variables in deployment.
 
-#📈 How It Works – Summary
+# 📈 How It Works – Summary
   Frontend (React):
   
   Loads public routes instantly.
@@ -77,7 +77,7 @@ This project is a fully functional Architect Portfolio Web Application built usi
   Backend on Render.
   
   Env variables securely managed on both platforms.
-#🛠️ Tech Stack
+# 🛠️ Tech Stack
 
   Frontend:
   
@@ -109,7 +109,7 @@ This project is a fully functional Architect Portfolio Web Application built usi
   
   bcryptjs
 
-#🔐 Features
+# 🔐 Features
 
   ✅ Secure JWT-based login & signup
   
@@ -125,7 +125,7 @@ This project is a fully functional Architect Portfolio Web Application built usi
   
   ✅ Axios configured for withCredentials support
 
-#🤝 Author
+# 🤝 Author
 
   Satnam Singh – Blockchain & MERN Stack Developer
   
