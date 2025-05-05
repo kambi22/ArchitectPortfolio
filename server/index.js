@@ -18,10 +18,10 @@ app.use(cookieParser())
 
 app.use(cors({
   origin: 'https://itsbambrahcreation.vercel.app',
+  methods: ["POST", "GET", "PUT", "DELETE"],
   credentials: true
 }));
-<<<<<<< HEAD
-=======
+
 
 
 // Cloudinary Config
