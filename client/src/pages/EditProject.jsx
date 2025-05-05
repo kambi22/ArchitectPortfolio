@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import imageCompression from 'browser-image-compression';
-import { Alert, AlertTitle, Box, Button, Container, Grid, TextField } from '@mui/material'
-import { useParams } from "react-router";
+import { Alert, AlertTitle, Box, Button, CircularProgress, Container, Grid, TextField } from '@mui/material'
+import { useNavigate, useParams } from "react-router";
 import { notify, toast } from '../layouts/Notify';
 export default function EditProject() {
   const [localImages, setLocallocalImages] = useState([]);
@@ -21,11 +21,9 @@ export default function EditProject() {
   const fileInputRef = useRef();
   const { id } = useParams();
    const [showAlert , setShowAlert ] = useState(false);
+   const navigate = useNavigate();
   
-    const handleAlert = () => {
-        setShowAlert(!showAlert)
-    }
-
+  
 
   console.log('local images:', localImages)
   console.log('db images:', dbImages)
@@ -86,9 +84,9 @@ export default function EditProject() {
 
   const handleUpdateProject = async (e) => {
     e.preventDefault();
-
+   
     if (!localImages.length && !dbImages.length) return;
-    setUploading(true);
+    
 
     const formData = new FormData();
 
@@ -107,6 +105,7 @@ export default function EditProject() {
     // Backend will receive dbImages as a string. You will JSON.parse it there.
 
     try {
+      setUploading(true);
       const resp = await axios.put(`${import.meta.env.VITE_SERVER_URL}/update/${id}`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
@@ -124,7 +123,7 @@ export default function EditProject() {
         location: '',
         description: ''
       });
-
+      navigate('/projects');
       notify('success', 'Sucess', 'Project successfully updated.');
 
     } catch (err) {
@@ -143,6 +142,7 @@ export default function EditProject() {
 
 
   useEffect(() => {
+    // axios.get(`${import.meta.env.VITE_SERVER_URL}/projectbyid/${id}`)
     axios.get(`${import.meta.env.VITE_SERVER_URL}/projectbyid/${id}`)
       .then((result) => {
         console.log('project updatedAt', result.data.updatedAt),
@@ -163,7 +163,7 @@ export default function EditProject() {
 
   return (
     <div>
- 
+
       <Container className="mt-5">
  
       <h4 className='fw-bold text-start mb-5'>Edit Project</h4>
@@ -218,6 +218,7 @@ export default function EditProject() {
 
 
         </div>
+        {uploading? <CircularProgress   size={50} sx={{position:'absolute',margin:'auto'}} />: null }
 
         <Box className='mt-5' component='form' onSubmit={handleUpdateProject}>
           <Grid container spacing={2}>

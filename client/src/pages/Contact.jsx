@@ -30,6 +30,7 @@ const Contact = () => {
     .then((result) => {
       console.log('Email successfully sent!', result.text);
       toast('success','Email Successfully Sent!','top-right',true)
+      setFormData({ name: "", email: "", subject: "", message: "" });
     })
     .catch((error) => {
       console.error('Error sending email:', error);
@@ -41,9 +42,6 @@ const Contact = () => {
     
   };
 
-  const openWhatsapp = () => {
-    console.log('whatsapp opned')
-  }
 
   return (
     <div className="">
@@ -68,7 +66,7 @@ const Contact = () => {
                 loop
                 autoplay
                 style={{ cursor: 'pointer' }}
-                onClick={openWhatsapp}
+               
               />
               <Typography variant="h6">Phone</Typography>
             </a>
@@ -80,7 +78,7 @@ const Contact = () => {
                 loop
                 autoplay
                 style={{ cursor: 'pointer' }}
-                onClick={openWhatsapp}
+         
               />
               <Typography className="text-center" variant="h6">Whatsapp</Typography></a>
           </Grid>
@@ -91,7 +89,7 @@ const Contact = () => {
                 loop
                 autoplay
 
-                onClick={openWhatsapp}
+         
               />
               <Typography variant="h6">Instagram</Typography>
             </Link>
@@ -103,7 +101,7 @@ const Contact = () => {
                 loop
                 autoplay
                 style={{ cursor: 'pointer' }}
-                onClick={openWhatsapp}
+           
               />
               </Link>
               <Typography className="mt-0 pt-0" variant="h6">Facebook</Typography>

@@ -18,12 +18,11 @@ app.use(cookieParser())
 
 app.use(cors({
   origin: 'https://itsbambrahcreation.vercel.app',
+  // origin: 'http://localhost:5173',
   credentials: true
 }));
-<<<<<<< HEAD
-=======
 
->>>>>>> 6624e9ef5bbef6aff3e0f01e057b1dd7415d9a92
+
 
 // Cloudinary Config
 cloudinary.config({
@@ -37,15 +36,10 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
 
-// Upload Route
-// app.post('/upload', upload.array('images'), async (req, res) => {
-//   const { name, type, category, area, floor, location, elevation, description } = req.body;
+app.get('/', (req, res) => {
 
-//   console.log('Body data:', name, type, category, area, floor, location, elevation, description);
-//   console.log('Files:', req.files); // Should contain uploaded images
-
-//   res.status(200).json({ message: 'Upload successful' });
-// });
+  res.status(200).json({ message: 'Hello Everyone!' });
+});
 
 
 

@@ -3,6 +3,7 @@ import axios from 'axios';
 import imageCompression from 'browser-image-compression';
 import { Box, Button, CircularProgress, Container, Grid, TextField } from '@mui/material'
 import { notify, toast } from '../layouts/Notify';
+import { useNavigate } from 'react-router';
 export default function AddProject() {
   const [images, setImages] = useState([]);;
   const [uploading, setUploading] = useState(false);
@@ -17,7 +18,8 @@ export default function AddProject() {
     description: ''
   });
   const fileInputRef = useRef();
-
+  const navigate = useNavigate();
+console.log('setuploadin', uploading)
 
   const compressImage = async (file) => {
     const options = {
@@ -64,46 +66,39 @@ export default function AddProject() {
   const handleAddproject = async (e) => {
     e.preventDefault();
 
-    console.log("project data:", projectData.name, projectData.type, projectData.category, projectData.area
-      , projectData.floor, projectData.elevation, projectData.location, projectData.description
-    )
     if (!images.length) return;
-    setUploading(true);
-
+  
     const formData = new FormData();
     images.forEach((img, index) => {
       formData.append('images', img.file); // backend will receive as array
     });
-
+  
     Object.entries(projectData).forEach(([key, value]) => {
       formData.append(key, value);
     });
-
-    console.log('formdata: ', images)
-
+  
     try {
-      axios.post(`${import.meta.env.VITE_SERVER_URL}/upload`, formData, {
+      setUploading(true);
+      const resp = await axios.post(`${import.meta.env.VITE_SERVER_URL}/upload`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
-      }).then((resp)=>{
-        console.log('Upload successful:', resp.data);
-        setImages([]);
-        setProjectData({
-          name: '',
-          type: '',
-          category: '',
-          area: '',
-          floor: 0,
-          elevation: '',
-          location: '',
-          description: ''
-        });
-
-        notify('success','Success','Project Successfully Uploaded')
-      })
-      
+      });
+      console.log('Upload successful:', resp.data);
+      setImages([]);
+      setProjectData({
+        name: '',
+        type: '',
+        category: '',
+        area: '',
+        floor: 0,
+        elevation: '',
+        location: '',
+        description: ''
+      });
+      navigate('/projects');
+      notify('success', 'Success', 'Project Successfully Uploaded');
     } catch (err) {
       console.error('Upload error:', err);
-     toast('error','Failed Upload','top-right',true)
+      toast('error', 'Failed Upload', 'top-right', true);
     } finally {
       setUploading(false);
     }
@@ -199,7 +194,7 @@ export default function AddProject() {
           </Grid>
           <div className="text-end mt-5 bg-">
         
-        <Button variant='contained' disabled={uploading}>{uploading? <CircularProgress className='me-2' size={20} color='black' />:null}{uploading ? 'Uploading...' : 'Add Project'}</Button>
+        <Button variant='contained' type='submit' disabled={uploading}>{uploading? <CircularProgress className='me-2' size={20} color='black' />:null}{uploading ? 'Uploading...' : 'Add Project'}</Button>
           </div>
         </Box>
       </Container>

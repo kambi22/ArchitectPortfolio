@@ -29,6 +29,7 @@ const Login = (props) => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
+          // const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/login`, user, {
           const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/login`, user, {
             withCredentials: true
           });

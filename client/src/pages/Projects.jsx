@@ -24,21 +24,23 @@ const Projects = (props) => {
       duration: 2000
     })
   }, []);
-console.log("backend server",import.meta.env.VITE_SERVER_URL)
-  useEffect(() => {
+  console.log("backend server", import.meta.env.VITE_SERVER_URL)
 
-    const fetchProject = () => {
-      try {
-        setLoading(true)
-        axios.get(`${import.meta.env.VITE_SERVER_URL}/project`)
-          .then((result) => setProjects(result.data))
-          .catch((error) => console.log('error', error))
-      } catch (error) {
-        console.log("error to fetch projects", error)
-      } finally {
-        setLoading(false)
-      }
+
+  const fetchProject = () => {
+    try {
+      setLoading(true)
+      // axios.get(`${import.meta.env.VITE_SERVER_URL}/project`)
+      axios.get(`${import.meta.env.VITE_SERVER_URL}/project`)
+        .then((result) => setProjects(result.data))
+        .catch((error) => console.log('error', error))
+    } catch (error) {
+      console.log("error to fetch projects", error)
+    } finally {
+      setLoading(false)
     }
+  }
+  useEffect(() => {
     fetchProject();
   }, []);
 
@@ -58,7 +60,7 @@ console.log("backend server",import.meta.env.VITE_SERVER_URL)
               console.log('result', result.data),
                 toast('success', 'Project sucessfully Deleted', 'bottom-left', true)
               fetchProject()
-              window.reload();
+             
 
             })
             .catch((error) => console.error("error to delete project", error))
@@ -87,7 +89,7 @@ console.log("backend server",import.meta.env.VITE_SERVER_URL)
                     {/* Use item.images[0] or fallback */}
                     <img
                       className="w-100 rounded-bottom-"
-                      src={item.images?.[0].url }
+                      src={item.images?.[0].url}
                       alt={item.name}
                       style={{ height: '250px' }}
                     />
@@ -126,26 +128,26 @@ console.log("backend server",import.meta.env.VITE_SERVER_URL)
 
 
             <>
-            <Grid className='bg- ' size={{ xl: 4, md: 4, sm: 6, xs: 12 }}>
-              <LoadingCard />
-            </Grid>
-            <Grid className='bg- ' size={{ xl: 4, md: 4, sm: 6, xs: 12 }}>
-              <LoadingCard />
-            </Grid>
-            <Grid className='bg- ' size={{ xl: 4, md: 4, sm: 6, xs: 12 }}>
-              <LoadingCard />
-            </Grid>
-            <Grid className='bg- ' size={{ xl: 4, md: 4, sm: 6, xs: 12 }}>
-              <LoadingCard />
-            </Grid>
-            <Grid className='bg- ' size={{ xl: 4, md: 4, sm: 6, xs: 12 }}>
-              <LoadingCard />
-            </Grid>
-          </>
+              <Grid className='bg- ' size={{ xl: 4, md: 4, sm: 6, xs: 12 }}>
+                <LoadingCard />
+              </Grid>
+              <Grid className='bg- ' size={{ xl: 4, md: 4, sm: 6, xs: 12 }}>
+                <LoadingCard />
+              </Grid>
+              <Grid className='bg- ' size={{ xl: 4, md: 4, sm: 6, xs: 12 }}>
+                <LoadingCard />
+              </Grid>
+              <Grid className='bg- ' size={{ xl: 4, md: 4, sm: 6, xs: 12 }}>
+                <LoadingCard />
+              </Grid>
+              <Grid className='bg- ' size={{ xl: 4, md: 4, sm: 6, xs: 12 }}>
+                <LoadingCard />
+              </Grid>
+            </>
 
 
           )}
-         
+
 
         </Grid>
 

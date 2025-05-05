@@ -120,8 +120,8 @@ export default function Navbar() {
             sx: {
               overflow: 'visible',
               filter: 'drop-shadow(0px 2px 4px rgba(0,0,0,0.32))',
-              borderRadius: '5px',
-              padding:'8px',
+              borderRadius: '10px',
+              padding:'4px',
               mt: 1.5,
               '& .MuiAvatar-root': {
                 width: 32,

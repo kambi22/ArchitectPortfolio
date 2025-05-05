@@ -14,6 +14,7 @@ const LoginContext = ({ children }) => {
   const accessProfile = async () => {
     setLoading(true);
     try {
+      // const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/profile`, {
       const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/profile`, {
         withCredentials: true
       });

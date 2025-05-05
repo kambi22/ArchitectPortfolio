@@ -150,21 +150,24 @@ export default function Sidebar() {
           </ListItemButton>}
             <Divider/>
            {!isAuthenticated? <Link to='/login' className='sidebar-links' onClick={handleSidebar}>
-            <ListItemButton className=''>
+            <ListItemButton className='bg-'>
               <ListItemIcon>
                 <IconButton  >
                   <MdLogin  />
                 </IconButton>
-                <ListItemText className='mt-2 ms-2'  primary='Login' />
+
+                <ListItemText className=' ms-2'  primary='Login' />  
               </ListItemIcon>
+              <p className='ms-auto mt-2 text-'>Admin </p>
             </ListItemButton>
+            
             </Link>:null}
-            <Card className='rounded-3 text-center quicksupport align-item-end' style={{bottom:'0px',marginBottom:'0px'}}>
+            <div className='rounded-3 text-center quicksupport align-item-end' style={{bottom:'0px',marginBottom:'0px'}}>
             <h3 className='pt-4 mb-0 pb-0'>Avail Quickly Support</h3><br />
             <p className='m-0 p-0'>We are here to assist for all</p>
             <p className='m-0 pb-3'> your  solutions</p>
             <Button className='mb-3' onClick={()=>navigate('/contact')} variant='contained' >Let's Talk</Button>
-          </Card>
+          </div>
 
         </List>
       </Drawer>

@@ -39,6 +39,7 @@ const ProjectDetail = (props) => {
     useEffect(() => {
        try {
         setLoading(true)
+        // axios.get(`${import.meta.env.VITE_SERVER_URL}/projectbyid/${id}`)
         axios.get(`${import.meta.env.VITE_SERVER_URL}/projectbyid/${id}`)
         .then((result) => { setProject(result.data), console.log("result:", result.data),
              setImages(result.data.images), setUpdateDate(result.data.updatedAt), console.log('images', result.data.images) })
@@ -60,7 +61,7 @@ const ProjectDetail = (props) => {
                                 <Card className="w-100 bg- rounded-4 shadow" >
                                     <img className="w-100 h-100" src={images[imgId].url} alt="" />
                                 </Card>
-                                <Card className="w-100 bg- rounded-4 mt-2 p-3 shadow" style={{ height: '200px' }}>
+                                <Card className="w-100 bg- rounded-4 mt-2 p-3 shadow" style={{ height:'fit-content' }}>
                                     <h4 className="text-start">Details</h4>
                                     <div className="d-flex w-100 mt-2  ">
 
@@ -81,7 +82,6 @@ const ProjectDetail = (props) => {
                                     </div>
                                   
 
-
                                 </Card>
                                  {loading && (
                                                         <div className="m-auto  bg-successk" style={{ top: '40%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: 5, position: 'absolute' }}>
@@ -89,9 +89,10 @@ const ProjectDetail = (props) => {
                                                             <Player className="bg-k " src='https://lottie.host/5a71c736-8150-4cf0-b870-7d97d992f1bc/y3KFjegVpO.json' loop autoplay style={{ height: '150px', width: '150px' }} />
                                                         </div>
                                                     )}
-                                <Card className="w-100 bg- rounded-4 mt-2 p-3 shadow" style={{ height: '200px' }}>
+                                <Card className="w-100 bg- rounded-4 mt-2 p-3 shadow" style={{ height: '200px',overflowY:'scroll'}}>
                                     <h4 className="text-start">Description</h4>
-                                    <p className="text-start text-muted">{project.description}</p>
+                                    <p className="text-start text-muted" >{project.description}</p>
+                                    
                                 </Card>
                             </Grid>
                             <Grid item size={{ xl: 4, md: 4, sm: 12, xs: 12 }}>
