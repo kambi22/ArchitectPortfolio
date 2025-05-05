@@ -199,7 +199,7 @@ export default function AddProject() {
           </Grid>
           <div className="text-end mt-5 bg-">
         
-        <Button variant='contained' disabled={uploading}>{uploading? <CircularProgress className='me-2' size={20} color='black' />:null}{uploading ? 'Uploading...' : 'Add Project'}</Button>
+        <Button variant='contained' type='submit' disabled={uploading}>{uploading? <CircularProgress className='me-2' size={20} color='black' />:null}{uploading ? 'Uploading...' : 'Add Project'}</Button>
           </div>
         </Box>
       </Container>
