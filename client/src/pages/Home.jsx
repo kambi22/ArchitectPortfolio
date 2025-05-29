@@ -41,7 +41,7 @@ const Home = () => {
   return (
     <Box>
       <div className="home-banner">
-        <img src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746180849/homeBanner_jri2ll.jpg' alt="wave" />
+        <img src='https://firebasestorage.googleapis.com/v0/b/trusty-sentinel-397012.appspot.com/o/Bambrah%20Creation%2FhomeBanner.jpg?alt=media&token=1e1864af-e165-4f6d-9613-19dee5955703' alt="Home banner" />
         <div className="banner-text w-100">
           <Container>
 
@@ -125,57 +125,57 @@ const Home = () => {
           <Grid container spacing={3} sx={{ paddingTop: '50px', backgroundColor: 'white' }}>
             <Grid size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
               <Card data-aos="zoom-in" className="shadow rounded-3 mx-auto" style={{ height: '200px', width: '300px', position: 'relative', cursor: 'pointer' }}>
-                <img className="w-100 h-100" src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746181053/BuildingPlanner_cmlofs.jpg' alt="" />
+                <img className="w-100 h-100" src='https://firebasestorage.googleapis.com/v0/b/trusty-sentinel-397012.appspot.com/o/Bambrah%20Creation%2Fbuilding%20planer.jpg?alt=media&token=f5f9fbf7-bc52-46f4-93ea-09975714909e' alt="Building Planer" />
                 <Typography className="services-text shadow" variant="h5">Building Planer</Typography>
               </Card>
             </Grid>
             <Grid size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
               <Card data-aos="zoom-in" className="shadow rounded-3 mx-auto" style={{ height: '200px', width: '300px', position: 'relative', cursor: 'pointer' }}>
-                <img className="w-100 h-100" src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746180880/Interior_ls0maw.jpg' alt="" />
+                <img className="w-100 h-100" src='https://firebasestorage.googleapis.com/v0/b/trusty-sentinel-397012.appspot.com/o/Bambrah%20Creation%2FInterior.jpg?alt=media&token=7b281280-f3d6-4b99-b7e7-c2bc3c8e52fc' alt="interior" />
                 <Typography className="services-text shadow" variant="h5">Interior & Exterior</Typography>
               </Card>
             </Grid>
             <Grid size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
               <Card data-aos="zoom-in" className="shadow rounded-3 mx-auto " style={{ height: '200px', width: '300px', position: 'relative', cursor: 'pointer' }}>
-                <img className="w-100 h-100" src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746182297/Estimator_ulzaiq.jpg' alt="" />
+                <img className="w-100 h-100" src='https://firebasestorage.googleapis.com/v0/b/trusty-sentinel-397012.appspot.com/o/Bambrah%20Creation%2FEstimator.jpg?alt=media&token=e74dad88-3780-41eb-ba5c-c230f3537094' alt="Estimator" />
                 <Typography className="services-text shadow" variant="h5">Design Estimator</Typography>
               </Card>
             </Grid>
 
             <Grid size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
               <Card data-aos="zoom-in" className="shadow rounded-3 mx-auto" style={{ height: '200px', width: '300px', position: 'relative', cursor: 'pointer' }}>
-                <img className="w-100 h-100" src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746182297/Embassy_ylelsq.jpg' alt="" />
+                <img className="w-100 h-100" src='https://firebasestorage.googleapis.com/v0/b/trusty-sentinel-397012.appspot.com/o/Bambrah%20Creation%2FEmbassy.jpg?alt=media&token=eab5ca99-91c4-49e5-8b5d-993ef8dbc5e2' alt="Embassy" />
                 <Typography className="services-text shadow" variant="h5">Embassy Purpose</Typography>
               </Card>
             </Grid>
             <Grid size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
               <Card data-aos="zoom-in" className="shadow rounded-3 mx-auto" style={{ height: '200px', width: '300px', position: 'relative', cursor: 'pointer' }}>
-                <img className="w-100 h-100" src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746180859/valuation_fxzoei.jpg' alt="" />
+                <img className="w-100 h-100" src='https://firebasestorage.googleapis.com/v0/b/trusty-sentinel-397012.appspot.com/o/Bambrah%20Creation%2Fvaluation.jpg?alt=media&token=5556979e-0a6d-488a-9c4f-fb053b884b7e' alt="valuation" />
                 <Typography className="services-text shadow" variant="h5">Valuation</Typography>
               </Card>
             </Grid>
             <Grid size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
               <Card data-aos="zoom-in" className="shadow rounded-3 mx-auto" style={{ height: '200px', width: '300px', position: 'relative', cursor: 'pointer' }}>
-                <img className="w-100 h-100" src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746182297/Noc_files_i6jtw1.jpg' alt="" />
+                <img className="w-100 h-100" src='https://firebasestorage.googleapis.com/v0/b/trusty-sentinel-397012.appspot.com/o/Bambrah%20Creation%2FNoc%20files.jpg?alt=media&token=e3ee99d7-8154-431b-8ec0-5c6f76b7ecd4' alt="NOC File" />
                 <Typography className="services-text shadow" variant="h5">NOC Files</Typography>
               </Card>
             </Grid>
 
             <Grid size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
               <Card data-aos="zoom-in" className="shadow rounded-3 mx-auto" style={{ height: '200px', width: '300px', position: 'relative', cursor: 'pointer' }}>
-                <img className="w-100 h-100" src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746182297/visualisation_ureh7y.jpg' alt="" />
+                <img className="w-100 h-100" src='https://firebasestorage.googleapis.com/v0/b/trusty-sentinel-397012.appspot.com/o/Bambrah%20Creation%2Fvisualisation.jpg?alt=media&token=fa33a83a-7c6f-42e1-9cd8-384a01875b32' alt="Visualisation" />
                 <Typography className="services-text shadow" variant="h5">Visualisation</Typography>
               </Card>
             </Grid>
             <Grid size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
               <Card data-aos="zoom-in" className="shadow rounded-3 mx-auto" style={{ height: '200px', width: '300px', position: 'relative', cursor: 'pointer' }}>
-                <img className="w-100 h-100" src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746180867/structureDesigner_nmq7ye.jpg' alt="" />
+                <img className="w-100 h-100" src='https://firebasestorage.googleapis.com/v0/b/trusty-sentinel-397012.appspot.com/o/Bambrah%20Creation%2FstructureDesigner.jpg?alt=media&token=ed093a8d-2c00-477f-b817-bd650a0ebe01' alt="Structure Design" />
                 <Typography className="services-text shadow" variant="h5">Structure Design</Typography>
               </Card>
             </Grid>
             <Grid size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
               <Card data-aos="zoom-in" className="shadow rounded-3 mx-auto" style={{ height: '200px', width: '300px', position: 'relative', cursor: 'pointer' }}>
-                <img className="w-100 h-100" src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746180896/approved_f7vm3g.jpg' alt="" />
+                <img className="w-100 h-100" src='https://firebasestorage.googleapis.com/v0/b/trusty-sentinel-397012.appspot.com/o/Bambrah%20Creation%2FApproved.jpg?alt=media&token=48287a26-e81c-413e-b8cb-7237cc0e911e' alt="MC Approvel" />
                 <Typography className="services-text shadow" variant="h5">MC Approved</Typography>
               </Card>
             </Grid>
