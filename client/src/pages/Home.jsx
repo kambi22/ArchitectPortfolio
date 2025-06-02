@@ -306,7 +306,7 @@ const Home = () => {
 
             </Grid>
 
-            <Button variant="contained" sx={{ marginTop: '70px' }} className="rounded-4 text-white  style={{backgroundColor:'lightgray'}}" size="large" onClick={() => navigate('/projects')}>Veiw All Projects</Button>
+            <Button variant="contained" sx={{ marginTop: '70px' }} className="rounded-4 text-white  ProjectButton" size="large" onClick={() => navigate('/projects')}>Veiw All Projects</Button>
 
 
           </Container>

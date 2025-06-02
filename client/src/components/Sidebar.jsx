@@ -167,7 +167,7 @@ export default function Sidebar() {
             <p className='m-0 p-0'>We are here to assist for all</p>
             <p className='m-0 pb-3'> your  solutions</p>
 
-            <Button className='mb-3' onClick={() => navigate('/contact')} variant='contained' >Let's Talk</Button>
+            <Button className='mb-3 ProjectButton text-white' onClick={() => navigate('/contact')} variant='contained' >Let's Talk</Button>
           </Card>
 
         </List>
