@@ -7,7 +7,7 @@ function App() {
   return (
     <CustomThemeProvider>
       <div className="bg-blue-500   text-3xl">
-        <Routing />
+        <Routing/>
       </div>
     </CustomThemeProvider>
 

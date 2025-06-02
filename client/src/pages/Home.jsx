@@ -1,16 +1,139 @@
 import { Box, Button, Container, Grid, Typography, Card, CardContent, CardMedia, Stack, Rating, CircularProgress, Skeleton, } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import AOS from 'aos';
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useContext, useEffect, useState, useSyncExternalStore } from "react";
 import CountUp from 'react-countup';
-
+import { Player } from "@lottiefiles/react-lottie-player";
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 import { GiTrophyCup } from "react-icons/gi";
 import axios from "axios";
+import { ThemeContext } from "@emotion/react";
+import { themeContext } from "../context/themContext";
+import { useRef } from 'react';
+import { gsap } from 'gsap';
+import { SplitText } from 'gsap/SplitText';
+import ReactCardFlip from 'react-card-flip';
+
+
+
+
+const services = [
+  {
+    label: 'Building Planner', description: 'We provide expert planning for residential, commercial, and institutional buildings, ensuring optimal space utilization and compliance with regulations. From concept to blueprint, we turn your vision into a structured plan.',
+    img: 'https://firebasestorage.googleapis.com/v0/b/trusty-sentinel-397012.appspot.com/o/Bambrah%20Creation%2Fbuilding%20planer.jpg?alt=media&token=f5f9fbf7-bc52-46f4-93ea-09975714909e'
+  },
+
+  {
+    label: 'Interior & Exterior', description: 'Transform your space inside and out with stunning, functional designs tailored to your lifestyle or brand. Our creative team blends aesthetics with practicality for beautiful, livable environments.',
+    img: 'https://firebasestorage.googleapis.com/v0/b/trusty-sentinel-397012.appspot.com/o/Bambrah%20Creation%2FInterior.jpg?alt=media&token=7b281280-f3d6-4b99-b7e7-c2bc3c8e52fc'
+  },
+  {
+    label: 'Estimator', description: 'Get precise design-based cost estimates for your construction project. We help you stay within budget without compromising quality or style.',
+    img: 'https://firebasestorage.googleapis.com/v0/b/trusty-sentinel-397012.appspot.com/o/Bambrah%20Creation%2FEstimator.jpg?alt=media&token=e74dad88-3780-41eb-ba5c-c230f3537094'
+  },
+
+  {
+    label: 'Embassy Purpose', description: 'Specialized architectural documentation and plans tailored to meet embassy project requirements. We ensure compliance with all international and security standards.',
+    img: 'https://firebasestorage.googleapis.com/v0/b/trusty-sentinel-397012.appspot.com/o/Bambrah%20Creation%2FEmbassy.jpg?alt=media&token=eab5ca99-91c4-49e5-8b5d-993ef8dbc5e2'
+  },
+  {
+    label: 'structure Design', description: 'Robust and reliable structural design for safe and sustainable buildings. Our engineers ensure your structure stands strong for generations.',
+    img: 'https://firebasestorage.googleapis.com/v0/b/trusty-sentinel-397012.appspot.com/o/Bambrah%20Creation%2FstructureDesigner.jpg?alt=media&token=ed093a8d-2c00-477f-b817-bd650a0ebe01'
+  },
+  {
+    label: 'Valuation', description: 'Accurate property and construction valuations for loans, sales, or legal purposes. Certified valuation reports based on current market standards and project specifications.',
+    img: 'https://firebasestorage.googleapis.com/v0/b/trusty-sentinel-397012.appspot.com/o/Bambrah%20Creation%2Fvaluation.jpg?alt=media&token=5556979e-0a6d-488a-9c4f-fb053b884b7e'
+  },
+  {
+    label: '3D Visualisation', description: 'Experience your project before its built with lifelike 3D renders and walkthroughs. Visualize layouts, textures, and lighting in stunning detail.',
+    img: 'https://firebasestorage.googleapis.com/v0/b/trusty-sentinel-397012.appspot.com/o/Bambrah%20Creation%2Fvisualisation.jpg?alt=media&token=fa33a83a-7c6f-42e1-9cd8-384a01875b32'
+  },
+  {
+    label: 'NOC Files', description: 'Preparation and submission of NOC (No Objection Certificate) files for hassle-free approvals. We handle the formalities so your project doesnt face delays.',
+    img: 'https://firebasestorage.googleapis.com/v0/b/trusty-sentinel-397012.appspot.com/o/Bambrah%20Creation%2FNoc%20files.jpg?alt=media&token=e3ee99d7-8154-431b-8ec0-5c6f76b7ecd4'
+  },
+  {
+    label: 'MC Approved', description: 'We prepare Municipal Committee-approved drawings and files to meet all local authority regulations. Fast-track your building approvals with compliant documentation.',
+    img: 'https://firebasestorage.googleapis.com/v0/b/trusty-sentinel-397012.appspot.com/o/Bambrah%20Creation%2FApproved.jpg?alt=media&token=48287a26-e81c-413e-b8cb-7237cc0e911e'
+  },
+
+
+]
 
 const Home = () => {
+  const { isDark, toggleTheme } = useContext(themeContext);
   const [projectimages, setProjectimages] = useState([]);
   const navigate = useNavigate();
+  const wordRef = useRef();
+  const characterRef = useRef();
+  const lineRef = useRef();
+  const [flippedStates, setFlippedStates] = useState(Array(services.length).fill(false));
+
+
+
+  const handleCardFlip = (index) => {
+    // Check if all cards are already flipped
+    const allFlipped = flippedStates.every(state => state === true);
+    if (allFlipped) return; // Stop if all are flipped
+
+    // Toggle the flip state for the clicked card
+    setFlippedStates(prev => {
+      const newStates = [...prev];
+      newStates[index] = !newStates[index];
+      return newStates;
+    });
+  };
+
+
+  useEffect(() => {
+    gsap.registerPlugin(SplitText);
+
+    // Create a master timeline
+    const tl = gsap.timeline();
+
+    // Word animation (first)
+    const wordSplit = new SplitText(wordRef.current, { type: "words" });
+    tl.from(wordSplit.words, {
+      duration: 2,
+      opacity: 0,
+      y: 50,
+      stagger: 0.4,
+      ease: "power3.out"
+    });
+
+    // Character animation (after word animation completes)
+    const charSplit = new SplitText(characterRef.current, { type: "chars" });
+    tl.from(charSplit.chars, {
+      duration: 0.8,
+      opacity: 0,
+      y: 20,
+      rotationX: 180,
+      stagger: 0.02,
+      ease: "back.out(1.5)"
+    }, "+=0.2"); // starts 0.5 seconds after previous animation ends
+
+    // Line animation (after character animation completes)
+    const lineSplit = new SplitText(lineRef.current, { type: "lines" });
+    tl.from(lineSplit.lines, {
+      duration: 1.2,
+      opacity: 0,
+      y: 100,
+      stagger: 0.15,
+      ease: "elastic.out(1, 0.3)"
+    }, "+=0.2"); // starts 0.3 seconds after previous animation ends
+
+    return () => {
+      wordSplit.revert();
+      charSplit.revert();
+      lineSplit.revert();
+      tl.kill();
+    };
+  }, []);
+
+
+
+
 
   useEffect(() => {
     AOS.refresh();
@@ -38,50 +161,41 @@ const Home = () => {
     getImages()
   }, []);
 
+
+  console.log("services", services)
   return (
-    <Box>
-      <div className="home-banner">
-        <img src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746180849/homeBanner_jri2ll.jpg' alt="wave" />
-        <div className="banner-text w-100">
-          <Container>
+    <div>
 
-            <Typography
-              data-aos="fade-down"
-              className="shadow"
-              variant="h2"
-              sx={{
-                fontSize: {
-                  xs: '1.8rem', // mobile
-                  sm: '2.5rem', // small screens
-                  md: '3.5rem', // medium and up
-                },
-              }}
-            >
-              Dream Into Reality
-            </Typography>
 
-            <Typography
-              data-aos="fade-right"
-              className="shadow"
-              variant="h3"
-              sx={{
-                fontSize: {
-                  xs: '1.2rem',
-                  sm: '2rem',
-                  md: '2.8rem',
-                },
-              }}
-            >
-              Let's Build Your Dream Home, with Bambrah Creation
-            </Typography><br />
-          </Container>
-        </div>
+      <div className="heroDiv">
+        <Grid className='' container spacing={3} >
+          <Grid className="bg-  h-100 " size={{ xs: 12, sm: 12, md: 6, xl: 6 }}>
+            <div className="text-animations-container text-start mt-5 " style={{ padding: '2rem' }}>
+              <h1 className="display-1 " ref={wordRef} style={{ marginBottom: '2rem' }}>It's Bambrah Creation</h1>
+              <h1 ref={characterRef} style={{ marginBottom: '1rem' }}>Dream Into Reality</h1>
+              <h1 ref={lineRef}>Let's Build Your Dream Home</h1>
+            </div>
+          </Grid>
+          <Grid className="bg- mt-5  h-100" size={{ xs: 12, sm: 12, md: 6, xl: 6 }}>
+
+
+            {!isDark ?
+              <Player className="h-100 w-100 m-2" src='https://cdn.lottielab.com/l/8Vnrmce9arZun4.json' loop autoplay />
+
+              :
+              <Player className="h-100 w-100 m-2" src='https://cdn.lottielab.com/l/ByWQ12HxwDie7U.json' loop autoplay />
+
+            }
+
+          </Grid>
+        </Grid>
       </div>
 
-      <div className="">
+      <div >
         <Grid container spacing={3} direction="row"
           sx={{
             justifyContent: "center",
+
 
           }}>
           <Grid sx={{ marginTop: '60px' }} size={{ xs: 12, sm: 6, md: 4, xl: 4 }}>
@@ -96,7 +210,7 @@ const Home = () => {
             <div className="d-flex justify-content-center">
               <i><GiTrophyCup fontSize={50} className="text-warning" /></i>
               <Typography variant="h3" sx={{ fontWeight: 'bold', }}>
-                <CountUp end={100} duration={8} ></CountUp>
+                <CountUp end={100} duration={22} ></CountUp>
               </Typography>
             </div>
 
@@ -112,74 +226,39 @@ const Home = () => {
         </Grid>
       </div>
 
-      <div className="custom-shape-div">
+      <div className="custom-shape-div" >
         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="shape-fill"></path>
+          <path style={{ fill: isDark ? '#454444' : 'white' }} d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="shape-fill"></path>
         </svg>
 
       </div>
-      <div className="bg-white services-div"  >
+      <div className="bg- services-div" style={{ backgroundColor: isDark ? '#454444' : 'white' }} >
         <Container>
           <Typography className="text-start " variant="h4">Services</Typography>
 
-          <Grid container spacing={3} sx={{ paddingTop: '50px', backgroundColor: 'white' }}>
-            <Grid size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
-              <Card data-aos="zoom-in" className="shadow rounded-3 mx-auto" style={{ height: '200px', width: '300px', position: 'relative', cursor: 'pointer' }}>
-                <img className="w-100 h-100" src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746181053/BuildingPlanner_cmlofs.jpg' alt="" />
-                <Typography className="services-text shadow" variant="h5">Building Planer</Typography>
-              </Card>
-            </Grid>
-            <Grid size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
-              <Card data-aos="zoom-in" className="shadow rounded-3 mx-auto" style={{ height: '200px', width: '300px', position: 'relative', cursor: 'pointer' }}>
-                <img className="w-100 h-100" src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746180880/Interior_ls0maw.jpg' alt="" />
-                <Typography className="services-text shadow" variant="h5">Interior & Exterior</Typography>
-              </Card>
-            </Grid>
-            <Grid size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
-              <Card data-aos="zoom-in" className="shadow rounded-3 mx-auto " style={{ height: '200px', width: '300px', position: 'relative', cursor: 'pointer' }}>
-                <img className="w-100 h-100" src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746182297/Estimator_ulzaiq.jpg' alt="" />
-                <Typography className="services-text shadow" variant="h5">Design Estimator</Typography>
-              </Card>
-            </Grid>
-
-            <Grid size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
-              <Card data-aos="zoom-in" className="shadow rounded-3 mx-auto" style={{ height: '200px', width: '300px', position: 'relative', cursor: 'pointer' }}>
-                <img className="w-100 h-100" src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746182297/Embassy_ylelsq.jpg' alt="" />
-                <Typography className="services-text shadow" variant="h5">Embassy Purpose</Typography>
-              </Card>
-            </Grid>
-            <Grid size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
-              <Card data-aos="zoom-in" className="shadow rounded-3 mx-auto" style={{ height: '200px', width: '300px', position: 'relative', cursor: 'pointer' }}>
-                <img className="w-100 h-100" src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746180859/valuation_fxzoei.jpg' alt="" />
-                <Typography className="services-text shadow" variant="h5">Valuation</Typography>
-              </Card>
-            </Grid>
-            <Grid size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
-              <Card data-aos="zoom-in" className="shadow rounded-3 mx-auto" style={{ height: '200px', width: '300px', position: 'relative', cursor: 'pointer' }}>
-                <img className="w-100 h-100" src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746182297/Noc_files_i6jtw1.jpg' alt="" />
-                <Typography className="services-text shadow" variant="h5">NOC Files</Typography>
-              </Card>
-            </Grid>
-
-            <Grid size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
-              <Card data-aos="zoom-in" className="shadow rounded-3 mx-auto" style={{ height: '200px', width: '300px', position: 'relative', cursor: 'pointer' }}>
-                <img className="w-100 h-100" src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746182297/visualisation_ureh7y.jpg' alt="" />
-                <Typography className="services-text shadow" variant="h5">Visualisation</Typography>
-              </Card>
-            </Grid>
-            <Grid size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
-              <Card data-aos="zoom-in" className="shadow rounded-3 mx-auto" style={{ height: '200px', width: '300px', position: 'relative', cursor: 'pointer' }}>
-                <img className="w-100 h-100" src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746180867/structureDesigner_nmq7ye.jpg' alt="" />
-                <Typography className="services-text shadow" variant="h5">Structure Design</Typography>
-              </Card>
-            </Grid>
-            <Grid size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
-              <Card data-aos="zoom-in" className="shadow rounded-3 mx-auto" style={{ height: '200px', width: '300px', position: 'relative', cursor: 'pointer' }}>
-                <img className="w-100 h-100" src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746180896/approved_f7vm3g.jpg' alt="" />
-                <Typography className="services-text shadow" variant="h5">MC Approved</Typography>
-              </Card>
-            </Grid>
-
+          <Grid container spacing={5} sx={{ paddingTop: '50px' }}>
+            {services.map((item, i) => (
+              <Grid size={{ xs: 12, sm: 6, md: 4, xl: 4 }} key={i}>
+                <div className="" data-aos="zoom-in" onClick={() => handleCardFlip(i)}>
+                  <ReactCardFlip flipDirection="horizontal" isFlipped={flippedStates[i]}>
+                    <div className="rounded-4 background" style={{height:'220px'}}>
+                      <Card className="shadow rounded-4 mx-auto"
+                        style={{ height: '98%', width: '99%', left: '3px', position: 'relative', cursor: 'pointer' }}>
+                        <img className="w-100 h-100" src={item.img} alt={item.label} />
+                        <Typography className="services-text shadow" variant="h5">{item.label}</Typography>
+                      </Card>
+                    </div>
+                    <div className="rounded-4 background pageBackground" style={{height:'220px'}}>
+                      <Card className="shadow rounded-4 mx-auto"
+                        style={{ height: '98%', width: '99%', left: '3px', position: 'relative', cursor: 'pointer' }}>
+                        <Typography className="m-3" variant="h5">{item.label}</Typography>
+                        <p className="p-2">{item.description}</p>
+                      </Card>
+                    </div>
+                  </ReactCardFlip>
+                </div>
+              </Grid>
+            ))}
           </Grid>
 
         </Container>
@@ -187,7 +266,7 @@ const Home = () => {
       </div>
       <div className="project-curve-top ">
         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="shape-fill"></path>
+          <path style={{ fill: isDark ? '#454444' : 'white' }} d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="shape-fill-"></path>
         </svg>
         <div className="bg- " style={{ paddingBottom: '100px' }} >
           <Container>
@@ -211,14 +290,14 @@ const Home = () => {
               ) : (
                 <>
                   <Grid className='w-100' container spacing={3} >
-                    <Grid className='bg- '  size={{ xs: 12, sm: 6, md: 4, xl: 4 }}  >
-                       <Skeleton animation='wave' className='rounded-4 w-100' variant="rounded" height={220} />
+                    <Grid className='bg- ' size={{ xs: 12, sm: 6, md: 4, xl: 4 }}  >
+                      <Skeleton animation='wave' className='rounded-4 w-100' variant="rounded" height={220} />
                     </Grid>
                     <Grid size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
-                       <Skeleton animation='wave'  className='rounded-4 w-100' variant="rounded" height={220} />
+                      <Skeleton animation='wave' className='rounded-4 w-100' variant="rounded" height={220} />
                     </Grid>
                     <Grid size={{ xs: 12, sm: 6, md: 4, xl: 4 }} >
-                       <Skeleton animation='wave'  className='rounded-4 w-100' variant="rounded" height={220} />
+                      <Skeleton animation='wave' className='rounded-4 w-100' variant="rounded" height={220} />
                     </Grid>
                   </Grid>
 
@@ -227,7 +306,7 @@ const Home = () => {
 
             </Grid>
 
-            <Button variant="contained" sx={{ marginTop: '70px' }} className="rounded-3 " size="large" onClick={() => navigate('/projects')}>Veiw All Projects</Button>
+            <Button variant="contained" sx={{ marginTop: '70px' }} className="rounded-4 text-white  style={{backgroundColor:'lightgray'}}" size="large" onClick={() => navigate('/projects')}>Veiw All Projects</Button>
 
 
           </Container>
@@ -269,7 +348,7 @@ const Home = () => {
         </Grid>
 
       </Container> */}
-    </Box>
+    </div>
   );
 };
 

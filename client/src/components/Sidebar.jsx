@@ -40,18 +40,18 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 export default function Sidebar() {
   const theme = useTheme();
   const { open, setOpen, handleSidebar } = useContext(SideContext)
-  const {isDark, toggleTheme} = useContext(themeContext)
+  const { isDark, toggleTheme } = useContext(themeContext)
   const {
-          isAuthenticated,
-          setIsAuthenticated,
-          loading,
-          refreshAuth: accessProfile
-        } = useContext(LogContext)
-        const navigate = useNavigate();
-// const handleTheme = () => {
-//     toggleTheme()
-//     handleSidebar()
-// }
+    isAuthenticated,
+    setIsAuthenticated,
+    loading,
+    refreshAuth: accessProfile
+  } = useContext(LogContext)
+  const navigate = useNavigate();
+  // const handleTheme = () => {
+  //     toggleTheme()
+  //     handleSidebar()
+  // }
 
 
   return (
@@ -67,7 +67,7 @@ export default function Sidebar() {
             width: drawerWidth,
             boxSizing: 'border-box',
           },
-        
+
           color: 'rgb(252, 247, 232)',
         }}
         variant='temporary'
@@ -76,98 +76,99 @@ export default function Sidebar() {
         onClose={handleSidebar}
         className="d-md-none d-block"
 
-        
+
       >
-        <DrawerHeader className=' ' sx={{height:'65px'}}>
-        <img className=' me-auto' src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746183761/sidebarLogo_ud77u7.png' alt="" style={{height:'50px', width:'200px'}} />
-   
+        <DrawerHeader className=' ' sx={{ height: '65px' }}>
+          <img className=' me-auto' src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746183761/sidebarLogo_ud77u7.png' alt="" style={{ height: '50px', width: '200px' }} />
+
           <IconButton onClick={handleSidebar}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </DrawerHeader>
         <Divider />
         <List className='bg-' component="div" disablePadding onClick={handleSidebar}>
-        <Link to='/' className='sidebar-links'>
+          <Link to='/' className='sidebar-links'>
             <ListItemButton className=''>
               <ListItemIcon>
                 <IconButton  >
-                  <MdHome  />
+                  <MdHome />
                 </IconButton>
-                <ListItemText className='mt-2 ms-2'  primary='Home' />
+                <ListItemText className='mt-2 ms-2' primary='Home' />
               </ListItemIcon>
             </ListItemButton>
-            </Link>
-           
-            <Link to='/projects' className='sidebar-links' onClick={handleSidebar}>
+          </Link>
+
+          <Link to='/projects' className='sidebar-links' onClick={handleSidebar}>
             <ListItemButton className=''>
               <ListItemIcon>
                 <IconButton  >
-                  <PiBuildingsFill  />
+                  <PiBuildingsFill />
                 </IconButton>
-                <ListItemText className='mt-2 ms-2'  primary='Projects' />
+                <ListItemText className='mt-2 ms-2' primary='Projects' />
               </ListItemIcon>
             </ListItemButton>
-            </Link>
-          
-            <Divider/>
-            <Link to='/about' className='sidebar-links' onClick={handleSidebar}>
-            
+          </Link>
+
+          <Divider />
+          <Link to='/about' className='sidebar-links' onClick={handleSidebar}>
+
             <ListItemButton className='' >
               <ListItemIcon>
                 <IconButton  >
-                  <MdPerson  />
+                  <MdPerson />
                 </IconButton>
-                <ListItemText className='mt-2 ms-2'  primary='About' />
+                <ListItemText className='mt-2 ms-2' primary='About' />
               </ListItemIcon>
             </ListItemButton>
-            </Link>
-            <Link to='/contact' className='sidebar-links' onClick={handleSidebar}>
+          </Link>
+          <Link to='/contact' className='sidebar-links' onClick={handleSidebar}>
             <ListItemButton className=''>
               <ListItemIcon>
                 <IconButton  >
-                  <MdPhone  />
+                  <MdPhone />
                 </IconButton>
-                <ListItemText className='mt-2 ms-2'  primary='Contact' />
+                <ListItemText className='mt-2 ms-2' primary='Contact' />
               </ListItemIcon>
             </ListItemButton>
-            </Link>
-           {!isDark?  <ListItemButton className='' onClick={toggleTheme}>
-              <ListItemIcon>
-                <IconButton  >
-                  <MdDarkMode  />
-                </IconButton>
-                <ListItemText className='mt-2 ms-2'  primary='Dark Mode' />
-              </ListItemIcon>
-            </ListItemButton>
-            : 
-            <ListItemButton className='' onClick={toggleTheme}>
+          </Link>
+          {!isDark ? <ListItemButton className='' onClick={toggleTheme}>
             <ListItemIcon>
               <IconButton  >
-                <MdLightMode  />
+                <MdDarkMode />
               </IconButton>
-              <ListItemText className='mt-2 ms-2'  primary='Light Mode' />
+              <ListItemText className='mt-2 ms-2' primary='Dark Mode' />
             </ListItemIcon>
-          </ListItemButton>}
-            <Divider/>
-           {!isAuthenticated? <Link to='/login' className='sidebar-links' onClick={handleSidebar}>
+          </ListItemButton>
+            :
+            <ListItemButton className='' onClick={toggleTheme}>
+              <ListItemIcon>
+                <IconButton  >
+                  <MdLightMode />
+                </IconButton>
+                <ListItemText className='mt-2 ms-2' primary='Light Mode' />
+              </ListItemIcon>
+            </ListItemButton>}
+          <Divider />
+          {!isAuthenticated ? <Link to='/login' className='sidebar-links' onClick={handleSidebar}>
             <ListItemButton className='bg-'>
               <ListItemIcon>
                 <IconButton  >
-                  <MdLogin  />
+                  <MdLogin />
                 </IconButton>
 
-                <ListItemText className=' ms-2'  primary='Login' />  
+                <ListItemText className=' ms-2' primary='Login' />
               </ListItemIcon>
               <p className='ms-auto mt-2 text-'>Admin </p>
             </ListItemButton>
-            
-            </Link>:null}
-            <div className='rounded-3 text-center quicksupport align-item-end' style={{bottom:'0px',marginBottom:'0px'}}>
+
+          </Link> : null}
+          <Card className='rounded-4 text-center  ' style={{ width: drawerWidth, position: 'fixed', bottom: '0px' }}>
             <h3 className='pt-4 mb-0 pb-0'>Avail Quickly Support</h3><br />
             <p className='m-0 p-0'>We are here to assist for all</p>
             <p className='m-0 pb-3'> your  solutions</p>
-            <Button className='mb-3' onClick={()=>navigate('/contact')} variant='contained' >Let's Talk</Button>
-          </div>
+
+            <Button className='mb-3' onClick={() => navigate('/contact')} variant='contained' >Let's Talk</Button>
+          </Card>
 
         </List>
       </Drawer>

@@ -10,39 +10,43 @@ const Footer = () => {
   const {isDark} = useContext(themeContext)
   console.log("isdark",isDark)
   return (
-    <div className='  bg-'>
+    <div className=''>
       <div className="w-100 bg- text-start">
       <img className='footer-image' src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746183634/footer-illustration_xeedjj.png' alt="footerimage" />
 
       </div>
-<Container  className='Footer   pt-4 pb-3' maxWidth='xl'
+<Container  className='Footer shadow  pt-4 pb-3' maxWidth='xl'
     sx={{
-      backgroundColor: isDark ? 'default' : '#5ba5f5',
-      color: isDark ? 'inherit' : 'rgb(252, 247, 232)',
+      backgroundColor: isDark ? 'default' : '#f5f5f5',
+      color: isDark ? 'inherit' : 'black',
   }} >
       <Grid container spacing={2}>
         <Grid className='bg-' size={{ xs: 12, sm: 12, md: 4, xl: 4 }}>
+          {isDark? 
           <img className='mb-0 pb-0' src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746183763/gopy_logo_white_sjspje.png' alt="logo" style={{height:'180px', width:'300px'}} />
+          :
+          <img className='mb-0 pb-0' src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746183762/removebg_full_logo_vkqezy.png' alt="logo" style={{height:'180px', width:'300px'}} />
+          }
         <h5 className='mt-0 pt-0'><strong>Bambrah Creation</strong></h5>
         <Typography variant='h6'>Follow Us</Typography>
-        <div className="d-flex justify-content-center">
-        <a className='text-white' href="tel:+919779270719" >
-            <IconButton className='text-white' size='large'  >
+        <div className="d-flex justify-content-center iconColore">
+        <a className='' href="tel:+919779270719" >
+            <IconButton className='' size='large'  >
               <FaPhone />
             </IconButton>
           </a>
-        <a className='text-white' href="https://wa.me/919779270719 " >
-            <IconButton className='text-white' size='large'  >
+        <a className='' href="https://wa.me/919779270719 " >
+            <IconButton className='' size='large'  >
               <FaWhatsapp />
             </IconButton>
           </a>
           <a href='https://www.facebook.com/profile.php?id=100065268842060' >
-            <IconButton size='large' className='text-white' >
+            <IconButton size='large' className='' >
               <FaInstagram />
             </IconButton>
           </a>
           <a href='https://www.facebook.com/profile.php?id=100065268842060'>
-            <IconButton size='large' className='text-white' >
+            <IconButton size='large' className='' >
               <FaFacebook />
             </IconButton>
           </a>

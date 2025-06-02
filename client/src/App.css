@@ -36,6 +36,11 @@
   transform: rotate(3deg);
 }
 
+.heroDiv{
+  height:700px;
+  padding: 50px;
+}
+
 /* =====================footer css end======================================= */
 
 .ColoredLight {
@@ -60,7 +65,7 @@
 
 .custom-list li a {
   text-decoration: none;
-  color: rgb(250, 247, 247);
+
   font-size: 15px;
   transition: color 0.3s ease;
 }
@@ -74,8 +79,19 @@
 }
 
 .quicksupport {
-  background-color: rgb(252, 252, 236);
+  position: fixed;
+  bottom: 0px;
 }
+.background{
+  background: linear-gradient(45deg, #63acfa,  #e99be5);
+   transition: all 300ms ease-out;
+
+}
+.background:hover{
+   transform: translateY(-10px); /* same as -translate-y-5 in Tailwind */
+    background: linear-gradient(45deg, #e99be5, #63acfa);
+}
+
 
 /* About page css */
 .about-image {
@@ -128,6 +144,16 @@
 .pageBackground {
   background: linear-gradient(45deg, #e99be5, #63acfa);
 
+}
+.ProjectButton {
+  background: linear-gradient(45deg, #e99be5, #63acfa);
+   box-shadow: 5px 5px 6px rgba(88, 87, 87, 0.1) !important
+}
+
+
+.ProjectButton:hover {
+  background: linear-gradient(45deg, #63acfa, #e99be5);
+    box-shadow: 5px 5px 6px rgba(88, 87, 87, 0.1);
 }
 
 .GlassEffectFordiv {
@@ -236,10 +262,10 @@
 
 }
 
-.custom-shape-div .shape-fill {
-  fill: #FFFFFF;
+/* .custom-shape-div .shape-fill {
+  fill: ;
 
-}
+} */
 
 .custom-shape-div-login {
   position: absolute;
@@ -371,6 +397,11 @@
 
 
 @media (max-width: 600px) {
+
+  .heroDiv{
+    height: max-content;
+    padding: 2px;
+  }
 
   /* contact email Adjust the breakpoint as needed for sm screens */
   .email-image {

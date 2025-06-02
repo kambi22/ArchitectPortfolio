@@ -1,5 +1,5 @@
 import { Box, Card, Container, Grid, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { FaChartArea, FaLayerGroup, FaLocationDot } from "react-icons/fa6";
 import { PiBuildingsFill } from "react-icons/pi";
 import { TbRotate3D } from "react-icons/tb";
@@ -8,7 +8,9 @@ import { useParams } from "react-router";
 import axios from "axios";
 import { MdDateRange } from "react-icons/md";
 import { Player } from "@lottiefiles/react-lottie-player";
+import { themeContext } from "../context/themContext";
 const ProjectDetail = (props) => {
+    const { isDark, toggleTheme } = useContext(themeContext);
     const [project, setProject] = useState();
     const [images, setImages] = useState([]);
     const [imgId, setImgId] = useState(0);
@@ -91,7 +93,8 @@ const ProjectDetail = (props) => {
                                                     )}
                                 <Card className="w-100 bg- rounded-4 mt-2 p-3 shadow" style={{ height: '200px',overflowY:'scroll'}}>
                                     <h4 className="text-start">Description</h4>
-                                    <p className="text-start text-muted" >{project.description}</p>
+                                    <p className="text-start " style={{color:isDark?'white':'inherit'}} >{project.description}</p>
+
                                     
                                 </Card>
                             </Grid>

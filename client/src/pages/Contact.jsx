@@ -168,7 +168,7 @@ const Contact = () => {
                   required
                 />
                 <div className="">
-                <Button className="mt-5  text-end" type="submit" variant="contained">Send Email</Button>
+                <Button className="mt-5  text-end ProjectButton text-white"  type="submit" variant="contained">Send Email</Button>
 
 
                 </div>

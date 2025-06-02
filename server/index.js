@@ -38,7 +38,7 @@ const upload = multer({ storage });
 
 app.get('/', (req, res) => {
 
-  res.status(200).json({ message: 'Hello Everyone!' });
+  res.status(200).json({ message: 'Hello Postman!' });
 });
 
 
