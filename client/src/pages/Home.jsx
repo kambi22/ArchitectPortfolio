@@ -13,7 +13,7 @@ import { themeContext } from "../context/themContext";
 import { useRef } from 'react';
 import { gsap } from 'gsap';
 import { SplitText } from 'gsap/SplitText';
-import ReactCardFlip from 'react-card-flip';
+
 
 
 
@@ -61,6 +61,7 @@ const services = [
 
 ]
 
+
 const Home = () => {
   const { isDark, toggleTheme } = useContext(themeContext);
   const [projectimages, setProjectimages] = useState([]);
@@ -68,23 +69,15 @@ const Home = () => {
   const wordRef = useRef();
   const characterRef = useRef();
   const lineRef = useRef();
-  const [flippedStates, setFlippedStates] = useState(Array(services.length).fill(false));
+//  const [flippedStates, setFlippedStates] = useState(services.map(() => false));
 
-
-
-  const handleCardFlip = (index) => {
-    // Check if all cards are already flipped
-    const allFlipped = flippedStates.every(state => state === true);
-    if (allFlipped) return; // Stop if all are flipped
-
-    // Toggle the flip state for the clicked card
-    setFlippedStates(prev => {
-      const newStates = [...prev];
-      newStates[index] = !newStates[index];
-      return newStates;
-    });
-  };
-
+// const handleCardFlip = (index) => {
+//   setFlippedStates(prev => {
+//     const newState = [...prev];
+//     newState[index] = !newState[index];
+//     return newState;
+//   });
+// };
 
   useEffect(() => {
     gsap.registerPlugin(SplitText);
@@ -162,6 +155,13 @@ const Home = () => {
   }, []);
 
 
+  
+// Add these styles to your CSS file or sx prop
+
+
+// Updated component code
+
+
   console.log("services", services)
   return (
     <div>
@@ -236,11 +236,13 @@ const Home = () => {
         <Container>
           <Typography className="text-start " variant="h4">Services</Typography>
 
-          <Grid container spacing={5} sx={{ paddingTop: '50px' }}>
+
+ <Grid container spacing={5} sx={{ paddingTop: '50px' }}>
             {services.map((item, i) => (
               <Grid size={{ xs: 12, sm: 6, md: 4, xl: 4 }} key={i}>
-                <div className="" data-aos="zoom-in" onClick={() => handleCardFlip(i)}>
-                  <ReactCardFlip flipDirection="horizontal" isFlipped={flippedStates[i]}>
+                {/* onClick={() => handleCardFlip(i)} */}
+                <div className="" data-aos="zoom-in" >
+                  {/* <ReactCardFlip flipDirection="horizontal" isFlipped={flippedStates[i]}> */}
                     <div className="rounded-4 background" style={{height:'220px'}}>
                       <Card className="shadow rounded-4 mx-auto"
                         style={{ height: '98%', width: '99%', left: '3px', position: 'relative', cursor: 'pointer' }}>
@@ -248,19 +250,18 @@ const Home = () => {
                         <Typography className="services-text shadow" variant="h5">{item.label}</Typography>
                       </Card>
                     </div>
-                    <div className="rounded-4 background pageBackground" style={{height:'220px'}}>
+                    {/* <div className="rounded-4 background pageBackground" style={{height:'220px'}}>
                       <Card className="shadow rounded-4 mx-auto"
                         style={{ height: '98%', width: '99%', left: '3px', position: 'relative', cursor: 'pointer' }}>
                         <Typography className="m-3" variant="h5">{item.label}</Typography>
                         <p className="p-2">{item.description}</p>
                       </Card>
-                    </div>
-                  </ReactCardFlip>
+                    </div> */}
+                  {/* </ReactCardFlip> */}
                 </div>
               </Grid>
             ))}
           </Grid>
-
         </Container>
 
       </div>

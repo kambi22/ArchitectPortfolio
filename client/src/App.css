@@ -138,7 +138,77 @@
   border: 1px solid rgba(255, 255, 255, 0.3);
   /* Light border */
 }
+/* Add to your global styles */
+.background {
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
 
+.services-text {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+/* Flip Card Container */
+.flip-container {
+  perspective: 1000px;
+  width: 100%;
+  height: 220px;
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+/* Flip animation wrapper */
+.flipper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+/* Flip when active */
+.flipper.flipped {
+  transform: rotateY(180deg);
+}
+
+/* Front and back faces */
+.flip-front, .flip-back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Back face starts flipped */
+.flip-back {
+  transform: rotateY(180deg);
+}
+
+/* Your existing card styles - adjust as needed */
+.flip-card {
+  height: 98%;
+  width: 99%;
+  left: 3px;
+  position: relative;
+}
+
+.services-text {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
 
 /* end loging page =================*/
 .pageBackground {
