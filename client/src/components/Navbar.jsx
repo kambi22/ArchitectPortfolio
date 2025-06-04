@@ -8,17 +8,17 @@ import IconButton from '@mui/material/IconButton';
 import { MdDarkMode, MdDelete, MdDeleteOutline, MdEdit, MdLightMode, MdOutlineAddToPhotos, MdOutlineAddPhotoAlternate, MdLogout, MdMenuOpen, MdModeEditOutline, MdOutlineAddAPhoto } from "react-icons/md";
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { Avatar, Container, Divider, ListItem, ListItemIcon, Menu, MenuItem, Tooltip } from '@mui/material';
-import { SideContext } from '../context/SidebarContext';
+
 import { FiEdit } from "react-icons/fi";
 import { LogContext } from '../context/LoginContext';
 import axios from 'axios';
 import { notify } from '../layouts/Notify';
 import { useEffect } from 'react';
 import { themeContext } from '../context/themContext';
+import { SideContext } from '../context/SidebarContext';
 export default function Navbar() {
   const { isDark, toggleTheme } = useContext(themeContext);
-
-  const { open, setOpen, handleSidebar } = useContext(SideContext);
+  const {open, setOpen, handleSidebar} = useContext(SideContext)
   const [elevated, setElevated] = useState(false);
 
   useEffect(() => {

@@ -1,6 +1,5 @@
 import React, { lazy, Suspense } from "react"
 import { BrowserRouter, Route, Routes } from "react-router";
-import SidebarContext from "./context/SidebarContext";
 import MainLayout from "./layouts/MainLayout";
 import Projects from './pages/Projects'
 import Home from './pages/Home'
@@ -11,13 +10,14 @@ import Login from './pages/Login'
 import ProtectedRouted from "./layouts/ProtectedRoute";
 import LoginContext from "./context/LoginContext";
 import { CircularProgress, LinearProgress } from "@mui/material";
+import SidebarContext from "./context/SidebarContext";
 const Routing = (props) => {
 
     const ProjectDetailLazy = lazy(() => import('./pages/ProjectDetail'))
     const AddProjectLazy = lazy(() => import('./pages/AddProject'))
     const EditProjectlLazy = lazy(() => import('./pages/EditProject'))
     return (
-        <SidebarContext>
+    <SidebarContext>
             <LoginContext>
                 <BrowserRouter>
                     <Routes>
