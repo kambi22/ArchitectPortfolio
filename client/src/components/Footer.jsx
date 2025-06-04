@@ -15,10 +15,11 @@ const Footer = () => {
       <img className='footer-image' src='https://res.cloudinary.com/duxaqcmgc/image/upload/v1746183634/footer-illustration_xeedjj.png' alt="footerimage" />
 
       </div>
-<Container  className='Footer shadow  pt-4 pb-3' maxWidth='xl'
+<Container  className='Footer   pt-4 pb-3' maxWidth='xl'
     sx={{
       backgroundColor: isDark ? 'default' : '#f5f5f5',
       color: isDark ? 'inherit' : 'black',
+     boxShadow: 5
   }} >
       <Grid container spacing={2}>
         <Grid className='bg-' size={{ xs: 12, sm: 12, md: 4, xl: 4 }}>

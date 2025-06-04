@@ -94,8 +94,9 @@ export default function Navbar() {
             aria-label="menu"
             sx={{ mr: 2 }}
             onClick={() => handleSidebar()}
+            
           >
-            <MdMenuOpen />
+            <MdMenuOpen color={isDark?'white':'black'} />
           </IconButton>
 
           {!isDark ?

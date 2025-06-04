@@ -5,7 +5,7 @@ import { useContext, useEffect, useState, useSyncExternalStore } from "react";
 import CountUp from 'react-countup';
 import { Player } from "@lottiefiles/react-lottie-player";
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
-
+import { motion } from "framer-motion";
 import { GiTrophyCup } from "react-icons/gi";
 import axios from "axios";
 import { ThemeContext } from "@emotion/react";
@@ -65,19 +65,27 @@ const services = [
 const Home = () => {
   const { isDark, toggleTheme } = useContext(themeContext);
   const [projectimages, setProjectimages] = useState([]);
+
   const navigate = useNavigate();
   const wordRef = useRef();
   const characterRef = useRef();
   const lineRef = useRef();
-//  const [flippedStates, setFlippedStates] = useState(services.map(() => false));
+const [isFlipped, setIsFlipped] = useState(Array(services.length).fill(false));
+  
+const handleCardFlip = (index) => {
+  const allFlipped = isFlipped.every(state => state === true);
+    if (allFlipped) return; // Stop if all are flipped
 
-// const handleCardFlip = (index) => {
-//   setFlippedStates(prev => {
-//     const newState = [...prev];
-//     newState[index] = !newState[index];
-//     return newState;
-//   });
-// };
+  setIsFlipped(prevState => {
+    const newState = [...prevState]; // Create a copy
+    newState[index] = !newState[index]; // Update specific index
+    return newState;
+  });
+
+  console.log('card clicked.', index, isFlipped[index]);
+};
+console.log('out side array',isFlipped)
+
 
   useEffect(() => {
     gsap.registerPlugin(SplitText);
@@ -155,11 +163,11 @@ const Home = () => {
   }, []);
 
 
-  
-// Add these styles to your CSS file or sx prop
+
+  // Add these styles to your CSS file or sx prop
 
 
-// Updated component code
+  // Updated component code
 
 
   console.log("services", services)
@@ -208,7 +216,14 @@ const Home = () => {
 
 
             <div className="d-flex justify-content-center">
-              <i><GiTrophyCup fontSize={50} className="text-warning" /></i>
+             <motion.span 
+
+             whileHover={{scale:1.1}}
+             transition={{duration:0.4, ease:'easeInOut'}}
+             
+             className="cursor-pointer">
+               <GiTrophyCup fontSize={50} className="text-warning" />
+             </motion.span>
               <Typography variant="h3" sx={{ fontWeight: 'bold', }}>
                 <CountUp end={100} duration={22} ></CountUp>
               </Typography>
@@ -237,30 +252,75 @@ const Home = () => {
           <Typography className="text-start " variant="h4">Services</Typography>
 
 
- <Grid container spacing={5} sx={{ paddingTop: '50px' }}>
-            {services.map((item, i) => (
-              <Grid size={{ xs: 12, sm: 6, md: 4, xl: 4 }} key={i}>
-                {/* onClick={() => handleCardFlip(i)} */}
-                <div className="" data-aos="zoom-in" >
-                  {/* <ReactCardFlip flipDirection="horizontal" isFlipped={flippedStates[i]}> */}
-                    <div className="rounded-4 background" style={{height:'220px'}}>
-                      <Card className="shadow rounded-4 mx-auto"
-                        style={{ height: '98%', width: '99%', left: '3px', position: 'relative', cursor: 'pointer' }}>
-                        <img className="w-100 h-100" src={item.img} alt={item.label} />
-                        <Typography className="services-text shadow" variant="h5">{item.label}</Typography>
-                      </Card>
-                    </div>
-                    {/* <div className="rounded-4 background pageBackground" style={{height:'220px'}}>
-                      <Card className="shadow rounded-4 mx-auto"
-                        style={{ height: '98%', width: '99%', left: '3px', position: 'relative', cursor: 'pointer' }}>
-                        <Typography className="m-3" variant="h5">{item.label}</Typography>
-                        <p className="p-2">{item.description}</p>
-                      </Card>
-                    </div> */}
-                  {/* </ReactCardFlip> */}
-                </div>
-              </Grid>
-            ))}
+          <Grid container spacing={5} sx={{ paddingTop: '50px' }}>
+          {services.map((item, i) => (
+        <Grid size={{ xs: 12, sm: 6, md: 4, xl: 4 }} key={i}>
+          <div className="" data-aos="zoom-in">
+            {/* Card Container */}
+            <motion.div
+              onClick={() => handleCardFlip(i)}
+              style={{ 
+                perspective: "1000px",
+                width: "100%",
+                height: "220px",
+                position: "relative",
+                transformStyle: "preserve-3d" // Crucial for 3D effects
+              }}
+              animate={{ rotateY: isFlipped[i] ? 180 : 0 }}
+              transition={{ duration: 0.6 }}
+              className="rounded-4"
+              // whileHover={{y:-10}}
+            >
+              {/* Front Side */}
+              <motion.div
+                style={{
+                  position: "absolute",
+                  width: "100%",
+                  height: "100%",
+                  backfaceVisibility: "hidden",
+                }}
+                
+               
+                className="background rounded-4 ps-1 pb-1"
+              >
+                <Card className="shadow rounded-4 mx-auto h-100"
+                  style={{ 
+                    width: "100%", 
+                    cursor: "pointer" 
+                  }}>
+                  <img className="w-100 h-100" src={item.img} alt={item.label} />
+                  <Typography className="services-text text-start" variant="h5">
+                    {item.label}
+                  </Typography>
+                </Card>
+              </motion.div>
+
+              {/* Back Side */}
+              <motion.div
+                style={{
+                  position: "absolute",
+                  width: "100%",
+                  height: "100%",
+                  backfaceVisibility: "hidden",
+                  rotateY: 180, // Initial rotation
+                  zIndex: 1,
+                  cursor: 'pointer'
+
+                }}
+               
+                className="background rounded-4 ps-1 pb-1"
+              >
+                <Card className="rounded-4  p-3 w-100 shadow h-100">
+                  <Typography className="p-2" variant="h5">
+                    {item.label}
+                  </Typography>
+                  <p>{item.description}</p>
+                </Card>
+              </motion.div>
+            </motion.div>
+          </div>
+        </Grid>
+      ))}
           </Grid>
         </Container>
 

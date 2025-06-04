@@ -87,10 +87,10 @@
    transition: all 300ms ease-out;
 
 }
-.background:hover{
-   transform: translateY(-10px); /* same as -translate-y-5 in Tailwind */
+ .background:hover{ 
+   transform: translateY(-10px); 
     background: linear-gradient(45deg, #e99be5, #63acfa);
-}
+} 
 
 
 /* About page css */
@@ -207,7 +207,7 @@
   right: 0;
   text-align: center;
   color: white;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+  /* text-shadow: 1px 1px 3px rgba(0,0,0,0.8); */
 }
 
 /* end loging page =================*/
