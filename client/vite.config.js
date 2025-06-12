@@ -12,8 +12,8 @@ export default defineConfig({
         name: `I'ts Bambrah Creation`,
         short_name: 'BAMBRAH CREATION',
         description: 'Build Your Dream Home with Bambrah Creation',
-        theme_color: '#ffffff',
-        background_color: '#ffffff',
+        theme_color: '#f5f5f5',
+        background_color: '#f5f5f5',
         display: 'standalone', // Fullscreen PWA
         icons: [
           {
